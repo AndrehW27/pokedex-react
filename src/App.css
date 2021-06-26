@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  background-color: rgb(66, 66, 66) ;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* button{
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  position: absolute;
+  z-index: 9999;
+  height: 200px;
+  width: 400px;
+} */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.containerApp{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+  
+  height: 100vh;
+  width: 100vw;
+  max-width: 25rem;
+
+  border:  5px solid rgb(0, 0, 0);
+  border-radius: 2rem;
+
+  /* background: linear-gradient(to top, rgb(131, 54, 9),  rgb(255, 163, 57)); */
+  color: black;
+}
+
+.containerPokedex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  height: 100vh;
+  width: 100%;
+  max-width: 25rem;
+ 
+  border-radius: 2rem;
+
+  background-color: white;
+}
+
+.buscarContainer {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto auto;
+  padding: 0 2rem;
+  gap: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* height: 6rem; */
+  width: 8rem;
+ 
+  border-radius: 1rem;
+  border: 1px solid black;
+  margin: 0 auto;
+  cursor: pointer;
 }
+
+.nextContainer > button{
+  margin: 0 1rem;
+}
+
