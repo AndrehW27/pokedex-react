@@ -34,8 +34,7 @@
 .voltar{
     cursor: pointer;
     width: 1.5rem;
-    height: 1.5rem;
-    
+    height: 1.5rem;    
 }
 
 .sprite{
@@ -45,11 +44,12 @@
 .efeitos{
     position: absolute;
     top: 4rem;
+    height: 20rem;
     width: 20rem;
-    opacity: 0.45;
+    opacity: 0.40;
     z-index: 2;
-
 }
+
 .sombra{
     position: absolute;
     top: 21rem;

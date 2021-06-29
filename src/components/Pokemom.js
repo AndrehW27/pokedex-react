@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import '../styles/pokemom.css';
 
 export default function Pokedex({
@@ -7,7 +7,7 @@ export default function Pokedex({
 
     const VoltarParaPokedex = () => {
         // hide(true);
-        document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+        document.getElementById("pokomomId").classList.remove("mostrarPoke");
     }
 
     return (
@@ -19,7 +19,7 @@ export default function Pokedex({
             </div>
 
             <img className="sprite" src={img} alt="Bulbassauro" />
-            <img className="efeitos" src={efeito} alt="Bulbassauro" />
+            <img className="efeitos" src={efeito} alt="" />
             {/* <div className="sombra"></div> */}
 
 
