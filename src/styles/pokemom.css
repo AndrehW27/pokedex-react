@@ -8,10 +8,10 @@
     width: 100%;
     max-width: 25rem;
 
-    border: 5px solid rgb(0, 0, 0);
+    /* border: 5px solid rgb(0, 0, 0); */
     position: absolute;
 
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
 
     color: white;
 }
