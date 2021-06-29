@@ -1,47 +1,49 @@
-.containerPokemom{
+.containerPokemom {
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    
+
     height: 100vh;
     width: 100%;
     max-width: 25rem;
 
-    border:  5px solid rgb(0, 0, 0);
-   position: absolute;
+    border: 5px solid rgb(0, 0, 0);
+    position: absolute;
 
     border-radius: 2rem;
-    
+
     color: white;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.mostrarPoke{
+.mostrarPoke {
     display: flex;
 }
 
-.voltarNum{
+.voltarNum {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 0 1rem;
 }
-.voltar{
+
+.voltar {
     cursor: pointer;
     width: 1.5rem;
-    height: 1.5rem;    
+    height: 1.5rem;
 }
 
-.sprite{
+.sprite {
     height: 18rem;
     z-index: 3;
 }
-.efeitos{
+
+.efeitos {
     position: absolute;
     top: 4rem;
     height: 20rem;
@@ -50,7 +52,7 @@
     z-index: 2;
 }
 
-.sombra{
+.sombra {
     position: absolute;
     top: 21rem;
     width: 13rem;
@@ -61,13 +63,14 @@
     z-index: 1;
 }
 
-.nome{
+.nome {
     margin-bottom: 0.5rem;
 }
 
-.gif{
+.gif {
     width: 2.5rem;
-    margin: 0 0.5rem;    ;
+    margin: 0 0.5rem;
+    ;
 }
 
 .infos {
@@ -82,61 +85,71 @@
     border-radius: 1rem;
 }
 
-.types{
-    display: flex;   
+.types {
+    display: flex;
     justify-content: center;
-    width: 100%; 
+    width: 100%;
 }
 
-.types > p{
+.types>p {
     margin: 0 1rem;
 }
 
-.type1, .type2{   
+.type1,
+.type2 {
     border-radius: 2rem;
-    padding: 0.25rem 1.5rem;    
+    padding: 0.25rem 1.5rem;
 }
 
 /* .type1{
     background-color: rgb(16, 80, 32);
 } */
 
-.type2{
+.type2 {
     background-color: rgb(62, 24, 105);
 }
 
-.pesoAltura{
-    display: flex;   
+.pesoAltura {
+    display: flex;
     justify-content: center;
-    width: 100%; 
+    width: 100%;
     margin-top: 1rem;
 }
 
-.pesoAltura > div{
+.pesoAltura>div {
     padding: 0 2rem;
 }
 
-.pesoAltura > div:first-child{
-    border-right: 1px solid ;
+.pesoAltura>div:first-child {
+    border-right: 1px solid;
 }
 
-.stats{
+.stats {
     margin-top: 1rem;
     width: 100%;
     padding: 0 1rem;
 }
 
-.hp, .atk, .def, .spd{
+.hp,
+.atk,
+.def,
+.spd {
     width: 2rem;
 }
 
-.hpBox, .atkBox, .defBox, .spdBox{
+.hpBox,
+.atkBox,
+.defBox,
+.spdBox {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
 }
 
-.hpValue, .atkValue, .defValue, .spdValue{
+.hpValue,
+.atkValue,
+.defValue,
+.spdValue {
     padding-left: 0.5rem;
     margin-left: 0.5rem;
     border-left: 1px solid white;
@@ -144,7 +157,10 @@
 
 }
 
-.hpBar, .atkBar, .defBar, .spdBar{
+.hpBar,
+.atkBar,
+.defBar,
+.spdBar {
     /* border: 1px solid rgb(255, 255, 255); */
     background-color: rgba(233, 233, 233, 0.5);
     flex: 1;
@@ -154,28 +170,28 @@
     box-sizing: border-box;
 }
 
-.hpBarInside{
+.hpBarInside {
     background-color: white;
     border-radius: 0.5rem;
     width: 50%;
     height: 100%;
 }
 
-.atkBarInside{
+.atkBarInside {
     background-color: white;
     border-radius: 0.5rem;
     width: 40%;
     height: 100%;
 }
 
-.defBarInside{
+.defBarInside {
     background-color: white;
     border-radius: 0.5rem;
     width: 70%;
     height: 100%;
 }
 
-.spdBarInside{
+.spdBarInside {
     background-color: white;
     border-radius: 0.5rem;
     width: 90%;

@@ -8,10 +8,32 @@ export default function App() {
 
   const [hidePokedex, setHidePokedex] = useState(false)
   const [next, setNext] = useState("")
+  const [prev, setPrev] = useState('https://pokeapi.co/api/v2/pokemon/')
   const [loading, setLoading] = useState(true)
   const [porcentagem, setPorcentagem] = useState(0)
 
   //CAIXAS DE POKE NA POKEDEX
+  const [idbox1, setIdBox1] = useState("")
+  const [idbox2, setIdBox2] = useState("")
+  const [idbox3, setIdBox3] = useState("")
+  const [idbox4, setIdBox4] = useState("")
+  const [idbox5, setIdBox5] = useState("")
+  const [idbox6, setIdBox6] = useState("")
+  const [idbox7, setIdBox7] = useState("")
+  const [idbox8, setIdBox8] = useState("")
+  const [idbox9, setIdBox9] = useState("")
+  const [idbox10, setIdBox10] = useState("")
+  const [idbox11, setIdBox11] = useState("")
+  const [idbox12, setIdBox12] = useState("")
+  const [idbox13, setIdBox13] = useState("")
+  const [idbox14, setIdBox14] = useState("")
+  const [idbox15, setIdBox15] = useState("")
+  const [idbox16, setIdBox16] = useState("")
+  const [idbox17, setIdBox17] = useState("")
+  const [idbox18, setIdBox18] = useState("")
+  const [idbox19, setIdBox19] = useState("")
+  const [idbox20, setIdBox20] = useState("")
+
   const [namebox1, setNameBox1] = useState("")
   const [imgbox1, setImgBox1] = useState("")
   const [namebox2, setNameBox2] = useState("")
@@ -206,85 +228,83 @@ export default function App() {
   }
 
   const Box1Chosed = () => {
-    gettingPokemom(1);
-
-
+    gettingPokemom(idbox1);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box2Chosed = () => {
-    gettingPokemom(2);
+    gettingPokemom(idbox2);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box3Chosed = () => {
-    gettingPokemom(3);
+    gettingPokemom(idbox3);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box4Chosed = () => {
-    gettingPokemom(4);
+    gettingPokemom(idbox4);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box5Chosed = () => {
-    gettingPokemom(5);
+    gettingPokemom(idbox5);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box6Chosed = () => {
-    gettingPokemom(6);
+    gettingPokemom(idbox6);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box7Chosed = () => {
-    gettingPokemom(7);
+    gettingPokemom(idbox7);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box8Chosed = () => {
-    gettingPokemom(8);
+    gettingPokemom(idbox8);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box9Chosed = () => {
-    gettingPokemom(9);
+    gettingPokemom(idbox9);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box10Chosed = () => {
-    gettingPokemom(10);
+    gettingPokemom(idbox10);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box11Chosed = () => {
-    gettingPokemom(11);
+    gettingPokemom(idbox11);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box12Chosed = () => {
-    gettingPokemom(12);
+    gettingPokemom(idbox12);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box13Chosed = () => {
-    gettingPokemom(13);
+    gettingPokemom(idbox13);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box14Chosed = () => {
-    gettingPokemom(14);
+    gettingPokemom(idbox14);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box15Chosed = () => {
-    gettingPokemom(15);
+    gettingPokemom(idbox15);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box16Chosed = () => {
-    gettingPokemom(16);
+    gettingPokemom(idbox16);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box17Chosed = () => {
-    gettingPokemom(17);
+    gettingPokemom(idbox17);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box18Chosed = () => {
-    gettingPokemom(18);
+    gettingPokemom(idbox18);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box19Chosed = () => {
-    gettingPokemom(19);
+    gettingPokemom(idbox19);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
   const Box20Chosed = () => {
-    gettingPokemom(20);
+    gettingPokemom(idbox20);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
   }
 
@@ -306,8 +326,9 @@ export default function App() {
           let data = await res.json()
           let nome = data.name;
           let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
-          let img = data.sprites.other.["official-artwork"].front_default;
-          // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+          // let img = data.sprites.other.["official-artwork"].front_default;
+          let id = data.id;
+          let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
 
           // console.log("URL " + [i] + " :" + pokemomURL[i]);
           // console.log("Nome " + [i] + " :" + nome);
@@ -316,63 +337,83 @@ export default function App() {
           if (i === 0) {
             setNameBox1(nomeUpper);
             setImgBox1(img);
+            setIdBox1(id);
           } else if (i === 1) {
             setNameBox2(nomeUpper);
             setImgBox2(img);
+            setIdBox2(id);
           } else if (i === 2) {
             setNameBox3(nomeUpper);
             setImgBox3(img);
+            setIdBox3(id);
           } else if (i === 3) {
             setNameBox4(nomeUpper);
             setImgBox4(img);
+            setIdBox4(id);
           } else if (i === 4) {
             setNameBox5(nomeUpper);
             setImgBox5(img);
+            setIdBox5(id);
           } else if (i === 5) {
             setNameBox6(nomeUpper);
             setImgBox6(img);
+            setIdBox6(id);
           } else if (i === 6) {
             setNameBox7(nomeUpper);
             setImgBox7(img);
+            setIdBox7(id);
           } else if (i === 7) {
             setNameBox8(nomeUpper);
             setImgBox8(img);
+            setIdBox8(id);
           } else if (i === 8) {
             setNameBox9(nomeUpper);
             setImgBox9(img);
+            setIdBox9(id);
           } else if (i === 9) {
             setNameBox10(nomeUpper);
             setImgBox10(img);
+            setIdBox10(id);
           } else if (i === 10) {
             setNameBox11(nomeUpper);
             setImgBox11(img);
+            setIdBox12(id);
           } else if (i === 11) {
             setNameBox12(nomeUpper);
             setImgBox12(img);
+            setIdBox12(id);
           } else if (i === 12) {
             setNameBox13(nomeUpper);
             setImgBox13(img);
+            setIdBox13(id);
           } else if (i === 13) {
             setNameBox14(nomeUpper);
             setImgBox14(img);
+            setIdBox14(id);            
           } else if (i === 14) {
             setNameBox15(nomeUpper);
             setImgBox15(img);
+            setIdBox15(id);
           } else if (i === 15) {
             setNameBox16(nomeUpper);
             setImgBox16(img);
+            setIdBox16(id);
           } else if (i === 16) {
             setNameBox17(nomeUpper);
             setImgBox17(img);
+            setIdBox17(id);
           } else if (i === 17) {
             setNameBox18(nomeUpper);
             setImgBox18(img);
+            setIdBox18(id);
           } else if (i === 18) {
             setNameBox19(nomeUpper);
             setImgBox19(img);
+            setIdBox19(id);
           } else if (i === 19) {
             setNameBox20(nomeUpper);
             setImgBox20(img);
+            setIdBox20(id);
           }
         }
 
@@ -426,8 +467,9 @@ export default function App() {
         let data = await res.json()
         let nome = data.name;
         let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
-        let img = data.sprites.other.["official-artwork"].front_default;
-        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+        // let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
 
         // console.log("URL " + [i] + " :" + pokemomURL[i]);
         // console.log("Nome " + [i] + " :" + nome);
@@ -436,63 +478,83 @@ export default function App() {
         if (i === 0) {
           setNameBox1(nomeUpper);
           setImgBox1(img);
+          setIdBox1(id);
         } else if (i === 1) {
           setNameBox2(nomeUpper);
           setImgBox2(img);
+          setIdBox2(id);
         } else if (i === 2) {
           setNameBox3(nomeUpper);
           setImgBox3(img);
+          setIdBox3(id);
         } else if (i === 3) {
           setNameBox4(nomeUpper);
           setImgBox4(img);
+          setIdBox4(id);
         } else if (i === 4) {
           setNameBox5(nomeUpper);
           setImgBox5(img);
+          setIdBox5(id);
         } else if (i === 5) {
           setNameBox6(nomeUpper);
           setImgBox6(img);
+          setIdBox6(id);
         } else if (i === 6) {
           setNameBox7(nomeUpper);
           setImgBox7(img);
+          setIdBox7(id);
         } else if (i === 7) {
           setNameBox8(nomeUpper);
           setImgBox8(img);
+          setIdBox8(id);
         } else if (i === 8) {
           setNameBox9(nomeUpper);
           setImgBox9(img);
+          setIdBox9(id);
         } else if (i === 9) {
           setNameBox10(nomeUpper);
           setImgBox10(img);
+          setIdBox10(id);
         } else if (i === 10) {
           setNameBox11(nomeUpper);
           setImgBox11(img);
+          setIdBox12(id);
         } else if (i === 11) {
           setNameBox12(nomeUpper);
           setImgBox12(img);
+          setIdBox12(id);
         } else if (i === 12) {
           setNameBox13(nomeUpper);
           setImgBox13(img);
+          setIdBox13(id);
         } else if (i === 13) {
           setNameBox14(nomeUpper);
           setImgBox14(img);
+          setIdBox14(id);            
         } else if (i === 14) {
           setNameBox15(nomeUpper);
           setImgBox15(img);
+          setIdBox15(id);
         } else if (i === 15) {
           setNameBox16(nomeUpper);
           setImgBox16(img);
+          setIdBox16(id);
         } else if (i === 16) {
           setNameBox17(nomeUpper);
           setImgBox17(img);
+          setIdBox17(id);
         } else if (i === 17) {
           setNameBox18(nomeUpper);
           setImgBox18(img);
+          setIdBox18(id);
         } else if (i === 18) {
           setNameBox19(nomeUpper);
           setImgBox19(img);
+          setIdBox19(id);
         } else if (i === 19) {
           setNameBox20(nomeUpper);
           setImgBox20(img);
+          setIdBox20(id);
         }
       }
 
@@ -501,6 +563,7 @@ export default function App() {
 
     // console.log(next20var);    
     setNext(next20var.next);
+    setPrev(next20var.previous);
     // console.log(next);
 
   }
@@ -520,7 +583,126 @@ export default function App() {
 
   // }, [porcentagem])
 
+  const Prev = async () => {
+    const getPokemonDataPrev = async () => {
+      let res = await fetch(prev);
+      let data = await res.json()
+      return data;
+    }
 
+    let prev20var = await getPokemonDataPrev();
+
+    let results = prev20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        // let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox12(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);            
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    setNext(prev20var.next);
+    setPrev(prev20var.previous);
+    // console.log(next);
+
+  }
 
   return (
     <div className="containerApp">
@@ -625,7 +807,7 @@ export default function App() {
         </div>
 
         <div className="nextContainer">
-          <button type="type" className="prevButton" >Prev</button>
+          <button type="type" className="prevButton" onClick={Prev}>Prev</button>
           <button type="type" className="NextButton" onClick={Next}>Next</button>
         </div>
       </div>
