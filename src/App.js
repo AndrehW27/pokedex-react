@@ -13,26 +13,26 @@ export default function App() {
   const [porcentagem, setPorcentagem] = useState(0)
 
   //CAIXAS DE POKE NA POKEDEX
-  const [idbox1, setIdBox1] = useState("")
-  const [idbox2, setIdBox2] = useState("")
-  const [idbox3, setIdBox3] = useState("")
-  const [idbox4, setIdBox4] = useState("")
-  const [idbox5, setIdBox5] = useState("")
-  const [idbox6, setIdBox6] = useState("")
-  const [idbox7, setIdBox7] = useState("")
-  const [idbox8, setIdBox8] = useState("")
-  const [idbox9, setIdBox9] = useState("")
-  const [idbox10, setIdBox10] = useState("")
-  const [idbox11, setIdBox11] = useState("")
-  const [idbox12, setIdBox12] = useState("")
-  const [idbox13, setIdBox13] = useState("")
-  const [idbox14, setIdBox14] = useState("")
-  const [idbox15, setIdBox15] = useState("")
-  const [idbox16, setIdBox16] = useState("")
-  const [idbox17, setIdBox17] = useState("")
-  const [idbox18, setIdBox18] = useState("")
-  const [idbox19, setIdBox19] = useState("")
-  const [idbox20, setIdBox20] = useState("")
+  const [idbox1, setIdBox1] = useState("0")
+  const [idbox2, setIdBox2] = useState("0")
+  const [idbox3, setIdBox3] = useState("0")
+  const [idbox4, setIdBox4] = useState("0")
+  const [idbox5, setIdBox5] = useState("0")
+  const [idbox6, setIdBox6] = useState("0")
+  const [idbox7, setIdBox7] = useState("0")
+  const [idbox8, setIdBox8] = useState("0")
+  const [idbox9, setIdBox9] = useState("0")
+  const [idbox10, setIdBox10] = useState("0")
+  const [idbox11, setIdBox11] = useState("0")
+  const [idbox12, setIdBox12] = useState("0")
+  const [idbox13, setIdBox13] = useState("0")
+  const [idbox14, setIdBox14] = useState("0")
+  const [idbox15, setIdBox15] = useState("0")
+  const [idbox16, setIdBox16] = useState("0")
+  const [idbox17, setIdBox17] = useState("0")
+  const [idbox18, setIdBox18] = useState("0")
+  const [idbox19, setIdBox19] = useState("0")
+  const [idbox20, setIdBox20] = useState("0")
 
   const [namebox1, setNameBox1] = useState("")
   const [imgbox1, setImgBox1] = useState("")
@@ -110,10 +110,11 @@ export default function App() {
     //POKEMOM DATA
     let charData = await getPokemonData(id);
     setPokeData(charData);
-    let idvar = charData.id.toString();
 
     // let idvar = charData.id
     // setId(idvar);
+
+    let idvar = charData.id.toString();
 
     if (idvar.length === 1) {
       let idvar = "#00" + charData.id.toString();
@@ -128,14 +129,14 @@ export default function App() {
       setId(idvar);
     }
 
-    let imgVar = await charData.sprites.other.["official-artwork"].front_default;
+    let imgVar = charData.sprites.other.["official-artwork"].front_default;
     setImagem(imgVar);
-    let nomeVar = await charData.name;
+    let nomeVar = charData.name;
     let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
     setNome(nomeUpper);
-    let gifVar = await charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+    let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
     setGif(gifVar);
-    let tipo1var = await charData.types[0].type.name;
+    let tipo1var = charData.types[0].type.name;
     setTipo1(tipo1var);
 
     //PESO
@@ -381,7 +382,7 @@ export default function App() {
           } else if (i === 10) {
             setNameBox11(nomeUpper);
             setImgBox11(img);
-            setIdBox12(id);
+            setIdBox11(id);
           } else if (i === 11) {
             setNameBox12(nomeUpper);
             setImgBox12(img);
@@ -522,7 +523,7 @@ export default function App() {
         } else if (i === 10) {
           setNameBox11(nomeUpper);
           setImgBox11(img);
-          setIdBox12(id);
+          setIdBox11(id);
         } else if (i === 11) {
           setNameBox12(nomeUpper);
           setImgBox12(img);
@@ -658,7 +659,7 @@ export default function App() {
         } else if (i === 10) {
           setNameBox11(nomeUpper);
           setImgBox11(img);
-          setIdBox12(id);
+          setIdBox11(id);
         } else if (i === 11) {
           setNameBox12(nomeUpper);
           setImgBox12(img);
@@ -716,7 +717,7 @@ export default function App() {
   return (
     <div className="containerApp">
 
-      {loading ?
+      {/* {loading ?
         <div className="loading">
           <img src="Pokédex_logo.png" className="pokeLogo"></img>
           <img src="pokeball.png" className="pokebola"></img>
@@ -738,7 +739,7 @@ export default function App() {
       </div>
       <div id="right" className="pokedexAnimationRight">
         <img src="play.png" className="open" onClick={AddAnimation}></img>
-      </div>
+      </div> */}
 
 
 
@@ -834,13 +835,13 @@ export default function App() {
 
         <div className="nextContainer">
           <button type="type" className="prevButton" onClick={Prev}>
-            <img src="right-arrow2.png" className="prevArrow" onClick={ChosenPoke}></img>
+            <img src="right-arrow2.png" className="prevArrow" ></img>
             <p>Prev</p>
           </button>
 
           <button type="type" className="nextButton" onClick={Next}>
             <p>Next</p>
-            <img src="right-arrow.png" className="nextArrow" onClick={ChosenPoke}></img>
+            <img src="right-arrow.png" className="nextArrow" ></img>
           </button>
 
         </div>
