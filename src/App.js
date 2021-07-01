@@ -7,9 +7,11 @@ import Pokedex from './components/Pokedex';
 export default function App() {
 
   const [hidePokedex, setHidePokedex] = useState(false)
-  const [next, setNext] = useState("")
-  const [prev, setPrev] = useState('https://pokeapi.co/api/v2/pokemon/')
   const [loading, setLoading] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const [next, setNext] = useState("")
+  const [prev, setPrev] = useState("")
   const [porcentagem, setPorcentagem] = useState(0)
 
   //CAIXAS DE POKE NA POKEDEX
@@ -226,10 +228,14 @@ export default function App() {
   }
 
   const ChosenPoke = () => {
+
     let valorDigitado = document.getElementById("buscaBotaoId").value;
-    console.log("valorDigitado: " + valorDigitado);
-    gettingPokemom(valorDigitado);
-    document.getElementById("pokomomId").classList.add("mostrarPoke");
+    if (valorDigitado !== "") {
+      // console.log("valorDigitado: " + valorDigitado);
+      gettingPokemom(valorDigitado);
+      document.getElementById("pokomomId").classList.add("mostrarPoke");
+    }
+
   }
 
   const Box1Chosed = () => {
@@ -453,6 +459,8 @@ export default function App() {
 
 
   const Next = async () => {
+    // console.log(next);
+
     const getPokemonDataNext = async () => {
       let res = await fetch(next);
       let data = await res.json()
@@ -460,6 +468,8 @@ export default function App() {
     }
 
     let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
 
     let results = next20var.results;
 
@@ -566,8 +576,11 @@ export default function App() {
       getPokeBox();
     }
 
-    // console.log(next20var);    
-    setNext(next20var.next);
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
     setPrev(next20var.previous);
     // console.log(next);
 
@@ -589,6 +602,7 @@ export default function App() {
   // }, [porcentagem])
 
   const Prev = async () => {
+    // console.log(prev);
     const getPokemonDataPrev = async () => {
       let res = await fetch(prev);
       let data = await res.json()
@@ -596,6 +610,8 @@ export default function App() {
     }
 
     let prev20var = await getPokemonDataPrev();
+    // console.log(prev20var.previous);
+
 
     let results = prev20var.results;
 
@@ -704,7 +720,10 @@ export default function App() {
 
     // console.log(next20var); 
     setNext(prev20var.next);
-    setPrev(prev20var.previous);
+    if (prev20var.previous !== null) {
+      setPrev(prev20var.previous);
+    }
+
     // console.log(next);
 
   }
@@ -712,6 +731,36 @@ export default function App() {
   const AddAnimation = () => {
     document.getElementById("top").classList.toggle("pokedexAnimationT");
     document.getElementById("right").classList.toggle("pokedexAnimationR");
+  }
+
+  // const Home = () => {
+  //   getting20Pokemom()
+  // }
+
+  const openMenu = () => {
+    if (menuOpen === false) {
+      document.getElementById("list").classList.remove("slideUpMenu");
+      document.getElementById("list").classList.add("slideDownMenu");
+      document.getElementById("gen1").classList.add("slideDownGen");
+      document.getElementById("gen2").classList.add("slideDownGen");
+      document.getElementById("gen3").classList.add("slideDownGen");
+      document.getElementById("gen4").classList.add("slideDownGen");
+      document.getElementById("gen5").classList.add("slideDownGen");
+      document.getElementById("genBox").classList.add("show");
+      setMenuOpen(true);
+
+    } else {
+      document.getElementById("list").classList.remove("slideDownMenu");
+      document.getElementById("list").classList.add("slideUpMenu");
+      // document.getElementById("gen1").classList.add("slideUpGen");
+      // document.getElementById("gen2").classList.add("slideUpGen");
+      // document.getElementById("gen3").classList.add("slideUpGen");
+      // document.getElementById("gen4").classList.add("slideUpGen");
+      // document.getElementById("gen5").classList.add("slideUpGen");
+      document.getElementById("genBox").classList.remove("show");
+
+      setMenuOpen(false);
+    }
   }
 
   return (
@@ -745,8 +794,22 @@ export default function App() {
 
       <div className="containerPokedex">
         <div className="buscarContainer">
+          <img src="list.png" className="listButton" onClick={openMenu}></img>
+
           <input id="buscaBotaoId" className="buscaInput" placeholder="Name or ID number..."></input>
           <img src="magnifier.png" className="buscaButton" onClick={ChosenPoke}></img>
+        </div>
+
+        <div id="list" className="generationListContainer">
+          <div id="genBox" className="genBoxContainer">
+            <div className="genBox">
+              <div id="gen1" className="generation">generation1</div>
+              <div id="gen2" className="generation">generation2</div>
+              <div id="gen3" className="generation">generation3</div>
+              <div id="gen4" className="generation">generation4</div>
+              <div id="gen5" className="generation">generation5</div>
+            </div>
+          </div>
         </div>
 
         <div className="grid-container">
@@ -834,6 +897,11 @@ export default function App() {
         </div>
 
         <div className="nextContainer">
+          {/* <button type="type" className="prevButton" onClick={Prev}>
+            <img src="right-arrow2.png" className="prevArrow" ></img>
+            
+          </button> */}
+
           <button type="type" className="prevButton" onClick={Prev}>
             <img src="right-arrow2.png" className="prevArrow" ></img>
             <p>Prev</p>

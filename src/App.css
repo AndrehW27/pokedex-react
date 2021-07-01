@@ -48,18 +48,149 @@ body {
   justify-content: center;
 }
 
-.buscaInput{
+.buscaInput {
   border-radius: 1rem;
   padding: 0.25rem 0.5rem;
 }
-.buscaButton{
-  width: 1.5rem;
-  height: 1.5rem;
+
+.buscaButton {
+  width: 1.75rem;
+  height: 1.75rem;
   margin-left: 0.25rem;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  transition: 300ms;
 }
-.buscaButton:hover{
-  opacity: 0.9;
+
+.buscaButton:hover,
+.listButton:hover {
+  opacity: 0.75;
+}
+
+.listButton {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.25rem;
+  /* transform: translateX(-2rem); */
+  /* position: absolute;
+  left: 1rem; */
+  cursor: pointer;
+  padding: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  transition: 300ms;
+}
+
+.generationListContainer {
+  position: absolute;
+  top: 6rem;
+  width: 100%;
+  /* height: 20rem; */
+  background-color: rgb(164, 196, 255);
+
+  /* border: 1px solid black; */
+}
+
+.genBoxContainer {
+  display: none;
+}
+
+.genBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.generation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid black;
+  width: 100%;
+  /* height: 3rem;  */
+  background-color: rgb(164, 196, 255);
+  color: white;
+}
+
+.slideDownGen {
+  animation: slidegen 1.5s;
+  animation-fill-mode: forwards;
+  /* animation-delay: 5s; */
+}
+
+@keyframes slidegen {
+  from {
+    height: 0rem;
+  }
+
+  to {
+    height: 3rem;
+  }
+}
+
+/* .slideUpGen {
+  animation: slidegenup 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 5s;
+}
+
+@keyframes slidegenup {
+  from {
+    height: 3rem;
+  }
+
+  to {
+    height: 0rem;
+  }
+} */
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.slideDownMenu {
+  animation: slidemenu 1.5s;
+  animation-fill-mode: forwards;
+  /* animation-delay: 5s; */
+}
+
+@keyframes slidemenu {
+  from {
+    height: 0rem;
+  }
+
+  to {
+    height: 15rem;
+  }
+}
+
+.slideUpMenu {
+  animation: slideUpMenu 1.5s;
+  animation-fill-mode: forwards;
+  /* animation-delay: 5s; */
+}
+
+@keyframes slideUpMenu {
+  from {
+    height: 15rem;
+  }
+
+  to {
+    height: 0rem;
+  }
 }
 
 .grid-container {
@@ -73,10 +204,12 @@ body {
 .grid-item {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   /* height: 6rem; */
   min-width: 9rem;
+  max-width: 9rem;
+
 
   border-radius: 0.5rem;
   /* border: 1px solid black; */
@@ -86,18 +219,25 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
   color: white;
   padding: 0rem 0.5rem;
-}
+  transition: 300ms;
 
-/* .grid-item > p{
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
-  padding: 0.5rem 0.75rem;
-} */
+}
 
 
 .grid-item:hover {
-  opacity: 0.9;
-  /* color: rgb(17, 49, 117); */
+  opacity: 0.75;
+  color: rgb(17, 49, 117);
+}
+
+.grid-item>p {
+  display: block;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  /* border-radius: 1rem; */
+  /* padding: 0.5rem 0.75rem; */
+  max-width: 5.5rem;
+  max-height: 1.25rem;
+  overflow: hidden;
+  /* word-wrap: break-word; */
 }
 
 .nextContainer>button {
@@ -174,7 +314,7 @@ body {
   color: white;
 }
 
-.pokedexAnimationR{
+.pokedexAnimationR {
   animation: slideRight 1.5s;
   animation-fill-mode: forwards;
   /* animation-delay: 5s; */
@@ -194,7 +334,7 @@ body {
 .pokedexAnimationTop {
   position: absolute;
   top: 0;
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: flex-start;
 
@@ -202,11 +342,11 @@ body {
   width: 100%;
   max-width: 25rem;
   background: linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57));
-  color: white;  
+  color: white;
   /* border-bottom: 15px solid #000; */
 }
 
-.pokedexAnimationT{
+.pokedexAnimationT {
   animation: slideTop 4s;
   animation-fill-mode: forwards;
   /* animation-delay: 5s; */
@@ -222,8 +362,8 @@ body {
   }
 }
 
-.bolona{
-  display: flex;  
+.bolona {
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 100%;
@@ -231,17 +371,17 @@ body {
   /* border: 1px solid black; */
 }
 
-.bolazul{
+.bolazul {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   border: 0.5rem solid rgb(71, 71, 71);
-  background-image: radial-gradient(circle , #4fffff 0%, #0cadad 60%, #075858 95%);
+  background-image: radial-gradient(circle, #4fffff 0%, #0cadad 60%, #075858 95%);
   /* background-image: radial-gradient(circle, rgb(0, 140, 255), rgb(81, 177, 255));   */
 }
 
-.tresbolas{
-  display: flex;  
+.tresbolas {
+  display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   height: 100%;
@@ -250,7 +390,9 @@ body {
   /* padding-left: 0.5rem; */
 }
 
-.bola1, .bola2, .bola3{
+.bola1,
+.bola2,
+.bola3 {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
@@ -259,26 +401,30 @@ body {
 
 }
 
-.bola1{
-  background-image: radial-gradient(circle , #ff4f4f 0%, #ad0c0c 60%, #580707 95%);
-
-}
-.bola2{
-  background-image: radial-gradient(circle , #ffed4f 0%, #ada20c 60%, #584c07 95%);
-
-}
-.bola3{
-  background-image: radial-gradient(circle , #64ff4f 0%, #1fad0c 60%, #0a5807 95%);
+.bola1 {
+  background-image: radial-gradient(circle, #ff4f4f 0%, #ad0c0c 60%, #580707 95%);
 
 }
 
+.bola2 {
+  background-image: radial-gradient(circle, #ffed4f 0%, #ada20c 60%, #584c07 95%);
+
+}
+
+.bola3 {
+  background-image: radial-gradient(circle, #64ff4f 0%, #1fad0c 60%, #0a5807 95%);
+
+}
 
 
-.open{
+
+.open {
   cursor: pointer;
   width: 2rem;
   height: 2.5rem;
   margin-left: 1rem;
+  transition: 300ms;
+
   /* background-image: url('../public/'); */
   /* background-color: transparent;
   color: black;
@@ -287,31 +433,42 @@ body {
   border-left: 25px solid rgb(223, 175, 18);
   border-right: 25px solid transparent; */
 }
-.open:hover{
+
+.open:hover {
   opacity: 0.9;
 }
 
-.nextContainer{
-    display: flex;
+.nextContainer {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nextContainer > button{
-  background-color: rgba(255, 255, 255, 0.5);  
+.nextContainer>button {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.nextButton, .prevButton{
+.nextButton,
+.prevButton {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.35rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: 300ms;
 }
 
-.nextArrow, .prevArrow{
+.nextButton:hover,
+.prevButton:hover {
+  opacity: 0.8;
+  color: rgb(17, 49, 117);
+
+}
+
+.nextArrow,
+.prevArrow {
   width: 1rem;
   height: 1rem;
-  margin: 0 0.25rem;  
+  margin: 0 0.25rem;
 }
