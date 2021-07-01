@@ -135,7 +135,11 @@ export default function App() {
     setImagem(imgVar);
     let nomeVar = charData.name;
     let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
+
+
     setNome(nomeUpper);
+
+
     let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
     setGif(gifVar);
     let tipo1var = charData.types[0].type.name;
@@ -337,6 +341,11 @@ export default function App() {
           let data = await res.json()
           let nome = data.name;
           let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+          let nlength = nomeUpper.length;
+          if (nlength > 9) {
+            nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+          }
+
           // let img = data.sprites.other.["official-artwork"].front_default;
           let id = data.id;
           let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
@@ -432,11 +441,7 @@ export default function App() {
       }
 
     }
-
     getting20Pokemom();
-
-
-
 
     setTimeout(() => {
       const FinishLoading = () => {
@@ -445,18 +450,7 @@ export default function App() {
       FinishLoading();
     }, 3000);
 
-
-
-
-    // const increasePerc1 = () => {
-    //   setPorcentagem(porcentagem + 1);
-    // }
-    // increasePerc1();
-
-
   }, [])
-
-
 
   const Next = async () => {
     // console.log(next);
@@ -482,6 +476,10 @@ export default function App() {
         let data = await res.json()
         let nome = data.name;
         let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
         // let img = data.sprites.other.["official-artwork"].front_default;
         let id = data.id;
         let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
@@ -586,21 +584,6 @@ export default function App() {
 
   }
 
-
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     let count = 100
-  //     for (let i = 0; i <= count; i++) {
-  //       let porcvar = i;
-  //       setPorcentagem(porcvar);
-  //       console.log(porcentagem);
-  //       console.log(porcvar);
-  //     }
-  //   }, 5000);
-
-  // }, [porcentagem])
-
   const Prev = async () => {
     // console.log(prev);
     const getPokemonDataPrev = async () => {
@@ -624,6 +607,10 @@ export default function App() {
         let data = await res.json()
         let nome = data.name;
         let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
         // let img = data.sprites.other.["official-artwork"].front_default;
         let id = data.id;
         let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
@@ -733,10 +720,6 @@ export default function App() {
     document.getElementById("right").classList.toggle("pokedexAnimationR");
   }
 
-  // const Home = () => {
-  //   getting20Pokemom()
-  // }
-
   const openMenu = () => {
     if (menuOpen === false) {
       document.getElementById("list").classList.remove("slideUpMenu");
@@ -746,6 +729,9 @@ export default function App() {
       document.getElementById("gen3").classList.add("slideDownGen");
       document.getElementById("gen4").classList.add("slideDownGen");
       document.getElementById("gen5").classList.add("slideDownGen");
+      document.getElementById("gen6").classList.add("slideDownGen");
+      document.getElementById("gen7").classList.add("slideDownGen");
+      document.getElementById("gen8").classList.add("slideDownGen");
       document.getElementById("genBox").classList.add("show");
       setMenuOpen(true);
 
@@ -790,8 +776,6 @@ export default function App() {
         <img src="play.png" className="open" onClick={AddAnimation}></img>
       </div> */}
 
-
-
       <div className="containerPokedex">
         <div className="buscarContainer">
           <img src="list.png" className="listButton" onClick={openMenu}></img>
@@ -803,114 +787,120 @@ export default function App() {
         <div id="list" className="generationListContainer">
           <div id="genBox" className="genBoxContainer">
             <div className="genBox">
-              <div id="gen1" className="generation">generation1</div>
-              <div id="gen2" className="generation">generation2</div>
-              <div id="gen3" className="generation">generation3</div>
-              <div id="gen4" className="generation">generation4</div>
-              <div id="gen5" className="generation">generation5</div>
+              <div id="gen1" className="generation">Generation I (1-151)</div>
+              <div id="gen2" className="generation">Generation II (152-251)</div>
+              <div id="gen3" className="generation">Generation III (252-386)</div>
+              <div id="gen4" className="generation">Generation IV (387-493)</div>
+              <div id="gen5" className="generation">Generation V (494-649)</div>
+              <div id="gen6" className="generation">Generation VI (650-721)</div>
+              <div id="gen7" className="generation">Generation VII (722-809)</div>
+              <div id="gen8" className="generation">Generation VIII (810-898)</div>
             </div>
           </div>
         </div>
 
-        <div className="grid-container">
-          <div className="grid-item" onClick={Box1Chosed}>
-            <p>{namebox1}</p>
-            <img className="miniImg" src={imgbox1} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box2Chosed}>
-            <p>{namebox2}</p>
-            <img className="miniImg" src={imgbox2} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box3Chosed}>
-            <p>{namebox3}</p>
-            <img className="miniImg" src={imgbox3} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box4Chosed}>
-            <p>{namebox4}</p>
-            <img className="miniImg" src={imgbox4} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box5Chosed}>
-            <p>{namebox5}</p>
-            <img className="miniImg" src={imgbox5} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box6Chosed}>
-            <p>{namebox6}</p>
-            <img className="miniImg" src={imgbox6} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box7Chosed}>
-            <p>{namebox7}</p>
-            <img className="miniImg" src={imgbox7} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box8Chosed}>
-            <p>{namebox8}</p>
-            <img className="miniImg" src={imgbox8} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box9Chosed}>
-            <p>{namebox9}</p>
-            <img className="miniImg" src={imgbox9} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box10Chosed}>
-            <p>{namebox10}</p>
-            <img className="miniImg" src={imgbox10} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box11Chosed}>
-            <p>{namebox11}</p>
-            <img className="miniImg" src={imgbox11} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box12Chosed}>
-            <p>{namebox12}</p>
-            <img className="miniImg" src={imgbox12} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box13Chosed}>
-            <p>{namebox13}</p>
-            <img className="miniImg" src={imgbox13} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box14Chosed}>
-            <p>{namebox14}</p>
-            <img className="miniImg" src={imgbox14} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box15Chosed}>
-            <p>{namebox15}</p>
-            <img className="miniImg" src={imgbox15} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box16Chosed}>
-            <p>{namebox16}</p>
-            <img className="miniImg" src={imgbox16} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box17Chosed}>
-            <p>{namebox17}</p>
-            <img className="miniImg" src={imgbox17} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box18Chosed}>
-            <p>{namebox18}</p>
-            <img className="miniImg" src={imgbox18} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box19Chosed}>
-            <p>{namebox19}</p>
-            <img className="miniImg" src={imgbox19} alt="" />
-          </div>
-          <div className="grid-item" onClick={Box20Chosed}>
-            <p>{namebox20}</p>
-            <img className="miniImg" src={imgbox20} alt="" />
+        <div className="gridPlusNext">
+          <div className="grid-container">
+            <div className="grid-item" onClick={Box1Chosed}>
+              <p>{namebox1}</p>
+              <img className="miniImg" src={imgbox1} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box2Chosed}>
+              <p>{namebox2}</p>
+              <img className="miniImg" src={imgbox2} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box3Chosed}>
+              <p>{namebox3}</p>
+              <img className="miniImg" src={imgbox3} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box4Chosed}>
+              <p>{namebox4}</p>
+              <img className="miniImg" src={imgbox4} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box5Chosed}>
+              <p>{namebox5}</p>
+              <img className="miniImg" src={imgbox5} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box6Chosed}>
+              <p>{namebox6}</p>
+              <img className="miniImg" src={imgbox6} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box7Chosed}>
+              <p>{namebox7}</p>
+              <img className="miniImg" src={imgbox7} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box8Chosed}>
+              <p>{namebox8}</p>
+              <img className="miniImg" src={imgbox8} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box9Chosed}>
+              <p>{namebox9}</p>
+              <img className="miniImg" src={imgbox9} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box10Chosed}>
+              <p>{namebox10}</p>
+              <img className="miniImg" src={imgbox10} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box11Chosed}>
+              <p>{namebox11}</p>
+              <img className="miniImg" src={imgbox11} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box12Chosed}>
+              <p>{namebox12}</p>
+              <img className="miniImg" src={imgbox12} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box13Chosed}>
+              <p>{namebox13}</p>
+              <img className="miniImg" src={imgbox13} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box14Chosed}>
+              <p>{namebox14}</p>
+              <img className="miniImg" src={imgbox14} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box15Chosed}>
+              <p>{namebox15}</p>
+              <img className="miniImg" src={imgbox15} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box16Chosed}>
+              <p>{namebox16}</p>
+              <img className="miniImg" src={imgbox16} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box17Chosed}>
+              <p>{namebox17}</p>
+              <img className="miniImg" src={imgbox17} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box18Chosed}>
+              <p>{namebox18}</p>
+              <img className="miniImg" src={imgbox18} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box19Chosed}>
+              <p>{namebox19}</p>
+              <img className="miniImg" src={imgbox19} alt="" />
+            </div>
+            <div className="grid-item" onClick={Box20Chosed}>
+              <p>{namebox20}</p>
+              <img className="miniImg" src={imgbox20} alt="" />
+            </div>
+
           </div>
 
-        </div>
-
-        <div className="nextContainer">
-          {/* <button type="type" className="prevButton" onClick={Prev}>
+          <div className="nextContainer">
+            {/* <button type="type" className="prevButton" onClick={Prev}>
             <img src="right-arrow2.png" className="prevArrow" ></img>
             
           </button> */}
 
-          <button type="type" className="prevButton" onClick={Prev}>
-            <img src="right-arrow2.png" className="prevArrow" ></img>
-            <p>Prev</p>
-          </button>
+            <button type="type" className="prevButton" onClick={Prev}>
+              <img src="right-arrow2.png" className="prevArrow" ></img>
+              <p>Prev</p>
+            </button>
 
-          <button type="type" className="nextButton" onClick={Next}>
-            <p>Next</p>
-            <img src="right-arrow.png" className="nextArrow" ></img>
-          </button>
+            <button type="type" className="nextButton" onClick={Next}>
+              <p>Next</p>
+              <img src="right-arrow.png" className="nextArrow" ></img>
+            </button>
+
+          </div>
 
         </div>
       </div>
