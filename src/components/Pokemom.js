@@ -2,7 +2,7 @@
 import '../styles/pokemom.css';
 
 export default function Pokedex({
-    hide, id, cor, img, efeito, gif, nome, tipo1, cortipo1, peso, altura, tipo2, hp, atk, def, spd }) {
+    hide, id, cor, img, efeito, gif, nome, tipo1, cortipo1, cortipo2, peso, altura, tipo2, hp, atk, def, spd }) {
 
 
     const VoltarParaPokedex = () => {
@@ -31,7 +31,7 @@ export default function Pokedex({
                 <div className="types">
                     <p className="type1" style={{ background: cortipo1 }}>{tipo1}</p>
 
-                    <p id="type2Id" className="type2">{tipo2}</p>
+                    <p id="type2Id" className="type2" style={{ background: cortipo2 }}>{tipo2}</p>
 
                 </div>
                 <div className="pesoAltura">

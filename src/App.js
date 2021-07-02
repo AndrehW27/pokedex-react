@@ -87,6 +87,7 @@ export default function App() {
   const [gif, setGif] = useState("")
   const [tipo1, setTipo1] = useState("")
   const [corTipo1, setCorTipo1] = useState("")
+  const [corTipo2, setCorTipo2] = useState("")
   const [peso, setPeso] = useState("")
   const [altura, setAltura] = useState("")
   const [tipo2, setTipo2] = useState("")
@@ -96,13 +97,25 @@ export default function App() {
   const [def, setDef] = useState("")
   const [spd, setSpd] = useState("")
 
+//TENTATIVA 404
+  const [isStatus404, setIsStatus404] = useState(false)
+
+
   // PEGANDO TODOS OS DADOS DA API
-
-
   const basePokemonURL = 'https://pokeapi.co/api/v2/pokemon/';
 
   const getPokemonData = async (endpoint) => {
     let res = await fetch(`${basePokemonURL}${endpoint}`);
+
+//TENTATIVA 404
+    let status404 = res.status
+    console.log(status404);
+    if (status404 === 404) {
+      setIsStatus404(true);
+      alert("Pokemom not found!")
+    }
+    setIsStatus404(false);
+    
     let data = await res.json()
     return data;
   }
@@ -111,288 +124,403 @@ export default function App() {
 
     //POKEMOM DATA
     let charData = await getPokemonData(id);
-    setPokeData(charData);
 
-    // let idvar = charData.id
-    // setId(idvar);
+//TENTATIVA 404
+    // if (isStatus404 === false) {}     
+    
+      setPokeData(charData);       
 
-    let idvar = charData.id.toString();
+      let idvar = charData.id.toString();
 
-    if (idvar.length === 1) {
-      let idvar = "#00" + charData.id.toString();
-      setId(idvar);
-    }
-    else if (idvar.length === 2) {
-      let idvar = "#0" + charData.id.toString();
-      setId(idvar);
-    }
-    else if (idvar.length === 3) {
-      let idvar = "#" + charData.id.toString();
-      setId(idvar);
-    }
+      if (idvar.length === 1) {
+        let idvar = "#00" + charData.id.toString();
+        setId(idvar);
+      }
+      else if (idvar.length === 2) {
+        let idvar = "#0" + charData.id.toString();
+        setId(idvar);
+      }
+      else if (idvar.length === 3) {
+        let idvar = "#" + charData.id.toString();
+        setId(idvar);
+      }
 
-    let imgVar = charData.sprites.other.["official-artwork"].front_default;
-    setImagem(imgVar);
-    let nomeVar = charData.name;
-    let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
-
-
-    setNome(nomeUpper);
+      let imgVar = charData.sprites.other.["official-artwork"].front_default;
+      setImagem(imgVar);
+      let nomeVar = charData.name;
+      let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
 
 
-    let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
-    setGif(gifVar);
-    let tipo1var = charData.types[0].type.name;
-    setTipo1(tipo1var);
-
-    //PESO
-    let pesovar = await charData.weight;
-    let kilosvar = pesovar.toString();
-    if (kilosvar.length === 2) {
-      let kilosvar2 = kilosvar.charAt(0) + "." + kilosvar.charAt(1)
-      setPeso(kilosvar2);
-    }
-    else if (kilosvar.length === 3) {
-      let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + "." + kilosvar.charAt(2)
-      setPeso(kilosvar2);
-    }
-    else if (kilosvar.length === 4) {
-      let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + kilosvar.charAt(2) + "." + kilosvar.charAt(2)
-      setPeso(kilosvar2);
-    }
-
-    //ALTURA
-    let alturavar = await charData.height;
-    let metrosvar = alturavar.toString();
-    if (metrosvar.length === 1) {
-      let metrosvar2 = "0." + metrosvar.charAt(0)
-      setAltura(metrosvar2);
-    }
-    else {
-      let metrosvar2 = metrosvar.charAt(0) + "." + metrosvar.charAt(1)
-      setAltura(metrosvar2);
-    }
+      setNome(nomeUpper);
 
 
-    let hpvar = charData.stats[0].base_stat;
-    setHp(hpvar);
-    let atkvar = charData.stats[1].base_stat;
-    setAtk(atkvar);
-    let defVar = charData.stats[2].base_stat;
-    setDef(defVar);
-    let spdvar = charData.stats[3].base_stat;
-    setSpd(spdvar);
+      let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+      setGif(gifVar);
+      let tipo1var = charData.types[0].type.name;
+      setTipo1(tipo1var);
 
 
+      //PESO
+      let pesovar = await charData.weight;
+      let kilosvar = pesovar.toString();
+      if (kilosvar.length === 2) {
+        let kilosvar2 = kilosvar.charAt(0) + "." + kilosvar.charAt(1)
+        setPeso(kilosvar2);
+      }
+      else if (kilosvar.length === 3) {
+        let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + "." + kilosvar.charAt(2)
+        setPeso(kilosvar2);
+      }
+      else if (kilosvar.length === 4) {
+        let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + kilosvar.charAt(2) + "." + kilosvar.charAt(2)
+        setPeso(kilosvar2);
+      }
 
-    if (tipo1var === "normal") {
-      setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
-      setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "fire") {
-      setCor("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
-      setCorTipo1("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
-      setEfeito("flames.png");
-    }
-    else if (tipo1var === "fighting") {
-      setCor("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
-      setCorTipo1("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "water") {
-      setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
-      setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "flying") {
-      setCor("linear-gradient(to top, rgb(167, 90, 255), rgb(184, 122, 255))");
-      setCorTipo1("linear-gradient(to top, rgb(167, 90, 255), rgb(184, 122, 255))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "grass") {
-      setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67))");
-      setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67))");
-      setEfeito("leaves.png");
-    }
-    else if (tipo1var === "poison") {
-      setCor("linear-gradient(to top, rgb(108, 38, 141), rgb(132, 72, 160))");
-      setCorTipo1("linear-gradient(to top, rgb(108, 38, 141), rgb(132, 72, 160))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "electric") {
-      setCor("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
-      setCorTipo1("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
-      setEfeito("thunder2.png");
-    }
-    else if (tipo1var === "ground") {
-      setCor("linear-gradient(to top, rgb(177, 164, 46), rgb(224, 209, 75))");
-      setCorTipo1("linear-gradient(to top, rgb(177, 164, 46), rgb(224, 209, 75))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "psychic") {
-      setCor("linear-gradient(to top, rgb(177, 46, 166), rgb(194, 87, 185))");
-      setCorTipo1("linear-gradient(to top, rgb(177, 46, 166), rgb(194, 87, 185))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "rock") {
-      setCor("linear-gradient(to top, rgb(121, 112, 32), rgb(151, 143, 65))");
-      setCorTipo1("linear-gradient(to top, rgb(121, 112, 32), rgb(151, 143, 65))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "ice") {
-      setCor("linear-gradient(to top, rgb(46, 151, 177), rgb(88, 170, 190)) ");
-      setCorTipo1("linear-gradient(to top, rgb(46, 151, 177), rgb(88, 170, 190)) ");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "bug") {
-      setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
-      setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
-      setEfeito("bug.png");
-    }
-    else if (tipo1var === "dragon") {
-      setCor("linear-gradient(to top, rgb(70, 22, 182), rgb(95, 46, 209))");
-      setCorTipo1("linear-gradient(to top, rgb(70, 22, 182), rgb(95, 46, 209))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "ghost") {
-      setCor("linear-gradient(to top, rgb(61, 18, 110), rgb(79, 33, 133))");
-      setCorTipo1("linear-gradient(to top, rgb(61, 18, 110), rgb(79, 33, 133))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "dark") {
-      setCor("linear-gradient(to top, rgb(67, 42, 11), rgb(77, 53, 25))");
-      setCorTipo1("linear-gradient(to top, rgb(67, 42, 11), rgb(77, 53, 25))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "steel") {
-      setCor("linear-gradient(to top, rgb(71, 84, 100), rgb(86, 98, 112))");
-      setCorTipo1("linear-gradient(to top, rgb(71, 84, 100), rgb(86, 98, 112))");
-      setEfeito("bubbles.png");
-    }
-    else if (tipo1var === "fairy") {
-      setCor("linear-gradient(to top, rgb(250, 155, 202), rgb(252, 179, 216))");
-      setCorTipo1("linear-gradient(to top, rgb(250, 155, 202), rgb(252, 179, 216))");
-      setEfeito("bubbles.png");
-    }
-    else {
-      setCor("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
-      setCorTipo1("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
-      setEfeito("bubbles.png");
-    }
+      //ALTURA
+      let alturavar = await charData.height;
+      let metrosvar = alturavar.toString();
+      if (metrosvar.length === 1) {
+        let metrosvar2 = "0." + metrosvar.charAt(0)
+        setAltura(metrosvar2);
+      }
+      else {
+        let metrosvar2 = metrosvar.charAt(0) + "." + metrosvar.charAt(1)
+        setAltura(metrosvar2);
+      }
+
+
+      let hpvar = charData.stats[0].base_stat;
+      setHp(hpvar);
+      let atkvar = charData.stats[1].base_stat;
+      setAtk(atkvar);
+      let defVar = charData.stats[2].base_stat;
+      setDef(defVar);
+      let spdvar = charData.stats[3].base_stat;
+      setSpd(spdvar);
 
 
 
+      if (tipo1var === "normal") {
+        setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+        setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+        setEfeito("normalteste.png");
+      }
+      else if (tipo1var === "fire") {
+        setCor("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+        setCorTipo1("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+        setEfeito("flames.png");
+      }
+      else if (tipo1var === "fighting") {
+        setCor("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+        setCorTipo1("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+        setEfeito("fight.png");
+      }
+      else if (tipo1var === "water") {
+        setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+        setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+        setEfeito("bubbles.png");
+      }
+      else if (tipo1var === "flying") {
+        setCor("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+        setCorTipo1("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+        setEfeito("wind4.png");
+      }
+      else if (tipo1var === "grass") {
+        setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+        setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+        setEfeito("leaves.png");
+      }
+      else if (tipo1var === "poison") {
+        setCor("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 180))");
+        setCorTipo1("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
+        setEfeito("smoke.png");
+      }
+      else if (tipo1var === "electric") {
+        setCor("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+        setCorTipo1("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+        setEfeito("thunder2.png");
+      }
+      else if (tipo1var === "ground") {
+        setCor("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+        setCorTipo1("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+        setEfeito("ground2.png");
+      }
+      else if (tipo1var === "psychic") {
+        setCor("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+        setCorTipo1("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+        setEfeito("psy2.png");
+      }
+      else if (tipo1var === "rock") {
+        setCor("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+        setCorTipo1("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+        setEfeito("rocks2.png");
+      }
+      else if (tipo1var === "ice") {
+        setCor("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+        setCorTipo1("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+        setEfeito("snow.png");
+      }
+      else if (tipo1var === "bug") {
+        setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+        setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+        setEfeito("bug.png");
+      }
+      else if (tipo1var === "dragon") {
+        setCor("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+        setCorTipo1("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+        setEfeito("dragon.png");
+      }
+      else if (tipo1var === "ghost") {
+        setCor("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+        setCorTipo1("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+        setEfeito("bat.png");
+      }
+      else if (tipo1var === "dark") {
+        setCor("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+        setCorTipo1("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+        setEfeito("dark.png");
+      }
+      else if (tipo1var === "steel") {
+        setCor("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+        setCorTipo1("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+        setEfeito("rock.png");
+      }
+      else if (tipo1var === "fairy") {
+        setCor("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
+        setCorTipo1("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
+        setEfeito("fairy.png");
+      }
+      else {
+        setCor("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+        setCorTipo1("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+        setEfeito("normalteste.png");
+      }
+
+
+      if (charData.types.length > 1) {
+        let tipo2var = charData.types[1].type.name;
+        setTipo2(tipo2var);
+
+        if (tipo2var === "normal") {
+          setCorTipo2("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+        }
+        else if (tipo2var === "fire") {
+          setCorTipo2("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+        }
+        else if (tipo2var === "fighting") {
+          setCorTipo2("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+        }
+        else if (tipo2var === "water") {
+          setCorTipo2("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+        }
+        else if (tipo2var === "flying") {
+          setCorTipo2("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+        }
+        else if (tipo2var === "grass") {
+          setCorTipo2("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+        }
+        else if (tipo2var === "poison") {
+          setCorTipo2("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
+        }
+        else if (tipo2var === "electric") {
+          setCorTipo2("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+        }
+        else if (tipo2var === "ground") {
+          setCorTipo2("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+        }
+        else if (tipo2var === "psychic") {
+          setCorTipo2("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+        }
+        else if (tipo2var === "rock") {
+          setCorTipo2("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+        }
+        else if (tipo2var === "ice") {
+          setCorTipo2("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+        }
+        else if (tipo2var === "bug") {
+          setCorTipo2("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+        }
+        else if (tipo2var === "dragon") {
+          setCorTipo2("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+        }
+        else if (tipo2var === "ghost") {
+          setCorTipo2("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+        }
+        else if (tipo2var === "dark") {
+          setCorTipo2("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+        }
+        else if (tipo2var === "steel") {
+          setCorTipo2("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+        }
+        else if (tipo2var === "fairy") {
+          setCorTipo2("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
+        }
+        else {
+          setCorTipo2("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+        }
+
+
+      }
 
 
 
 
 
-    //REFINAMENTO TIPO 2
-    if (charData.types.length > 1) {
-      let tipo2var = await charData.types[1].type.name;
-      document.getElementById("type2Id").classList.remove("hide");
+      //REFINAMENTO TIPO 2
+      if (charData.types.length > 1) {
+        let tipo2var = await charData.types[1].type.name;
+        document.getElementById("type2Id").classList.remove("hide");
 
-      setTipo2(tipo2var);
-    }
-    else {
-      document.getElementById("type2Id").classList.add("hide");
-    }
+        setTipo2(tipo2var);
+      }
+      else {
+        document.getElementById("type2Id").classList.add("hide");
+      }
 
-    // console.log(charData.types.length);
+      // console.log(charData.types.length);
 
-  }
+    } 
+
 
   const ChosenPoke = () => {
 
     let valorDigitado = document.getElementById("buscaBotaoId").value;
     if (valorDigitado !== "") {
-      // console.log("valorDigitado: " + valorDigitado);
+     
+//TENTATIVA 404
       gettingPokemom(valorDigitado);
-      document.getElementById("pokomomId").classList.add("mostrarPoke");
+      if (isStatus404 === false) {
+        document.getElementById("pokomomId").classList.add("mostrarPoke");
+      }
+
+      // gettingPokemom(valorDigitado);
+      // document.getElementById("pokomomId").classList.add("mostrarPoke");
+
     }
+    document.getElementById("buscaBotaoId").value = "";
 
   }
 
   const Box1Chosed = () => {
     gettingPokemom(idbox1);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
+
   }
   const Box2Chosed = () => {
     gettingPokemom(idbox2);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box3Chosed = () => {
     gettingPokemom(idbox3);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box4Chosed = () => {
     gettingPokemom(idbox4);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box5Chosed = () => {
     gettingPokemom(idbox5);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box6Chosed = () => {
     gettingPokemom(idbox6);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box7Chosed = () => {
     gettingPokemom(idbox7);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box8Chosed = () => {
     gettingPokemom(idbox8);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box9Chosed = () => {
     gettingPokemom(idbox9);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box10Chosed = () => {
     gettingPokemom(idbox10);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box11Chosed = () => {
     gettingPokemom(idbox11);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box12Chosed = () => {
     gettingPokemom(idbox12);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box13Chosed = () => {
     gettingPokemom(idbox13);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box14Chosed = () => {
     gettingPokemom(idbox14);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box15Chosed = () => {
     gettingPokemom(idbox15);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box16Chosed = () => {
     gettingPokemom(idbox16);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box17Chosed = () => {
     gettingPokemom(idbox17);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box18Chosed = () => {
     gettingPokemom(idbox18);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box19Chosed = () => {
     gettingPokemom(idbox19);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
   const Box20Chosed = () => {
     gettingPokemom(idbox20);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
+    document.getElementById("genContId").classList.add("hide");
+    setMenuOpen(false)
   }
 
   //PEGANDO 20 POkES
@@ -794,6 +922,9 @@ export default function App() {
 
   const openMenu = () => {
     if (menuOpen === false) {
+      document.getElementById("genContId").classList.remove("hide");
+
+
       document.getElementById("gen1boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen2boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen3boxid").classList.remove("slideGenClassUp");
@@ -1909,12 +2040,10 @@ export default function App() {
     openMenu();
   }
 
-
-
   return (
     <div className="containerApp">
 
-      {loading ?
+      {/* {loading ?
         <div className="loading">
           <img src="Pokédex_logo.png" className="pokeLogo"></img>
           <img src="pokeball.png" className="pokebola"></img>
@@ -1936,7 +2065,9 @@ export default function App() {
       </div>
       <div id="right" className="pokedexAnimationRight">
         <img src="play.png" className="open" onClick={AddAnimation}></img>
-      </div>
+      </div> */}
+
+
 
       <div className="containerPokedex">
         <div className="buscarContainer">
@@ -2121,6 +2252,7 @@ export default function App() {
         gif={gif}
         tipo1={tipo1}
         cortipo1={corTipo1}
+        cortipo2={corTipo2}
         peso={peso}
         altura={altura}
         tipo2={tipo2}
