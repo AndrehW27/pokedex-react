@@ -346,9 +346,9 @@ export default function App() {
             nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
           }
 
-          // let img = data.sprites.other.["official-artwork"].front_default;
+          let img = data.sprites.other.["official-artwork"].front_default;
           let id = data.id;
-          let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+          // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
 
           // console.log("URL " + [i] + " :" + pokemomURL[i]);
           // console.log("Nome " + [i] + " :" + nome);
@@ -480,9 +480,9 @@ export default function App() {
         if (nlength > 9) {
           nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
         }
-        // let img = data.sprites.other.["official-artwork"].front_default;
+        let img = data.sprites.other.["official-artwork"].front_default;
         let id = data.id;
-        let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
 
         // console.log("URL " + [i] + " :" + pokemomURL[i]);
         // console.log("Nome " + [i] + " :" + nome);
@@ -611,9 +611,9 @@ export default function App() {
         if (nlength > 9) {
           nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
         }
-        // let img = data.sprites.other.["official-artwork"].front_default;
+        let img = data.sprites.other.["official-artwork"].front_default;
         let id = data.id;
-        let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
 
         // console.log("URL " + [i] + " :" + pokemomURL[i]);
         // console.log("Nome " + [i] + " :" + nome);
@@ -781,6 +781,1064 @@ export default function App() {
     }
   }
 
+  const GoGenI = async () => {
+    // console.log(next);
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL);
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenII = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=151");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenIII = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=251");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenIV = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=386");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenV = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=493");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenVI = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=649");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenVII = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=721");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+
+  const GoGenVIII = async () => {
+    // console.log("genII");
+
+    const getPokemonDataNext = async () => {
+      let res = await fetch(basePokemonURL+"?offset=809");
+      let data = await res.json()
+      return data;
+    }
+
+    let next20var = await getPokemonDataNext();
+    // console.log(next20var.next);
+
+
+    let results = next20var.results;
+
+    let pokemomURL = [];
+    for (let i = 0; i < results.length; i++) {
+      pokemomURL[i] = results[i].url;
+
+      const getPokeBox = async () => {
+        let res = await fetch(pokemomURL[i]);
+        let data = await res.json()
+        let nome = data.name;
+        let nomeUpper = nome.charAt(0).toUpperCase() + nome.slice(1);
+        let nlength = nomeUpper.length;
+        if (nlength > 9) {
+          nomeUpper = nomeUpper.slice(0, -(nlength - 8)) + "...";
+        }
+        let img = data.sprites.other.["official-artwork"].front_default;
+        let id = data.id;
+        // let img = data.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+
+        // console.log("URL " + [i] + " :" + pokemomURL[i]);
+        // console.log("Nome " + [i] + " :" + nome);
+        // console.log("Img " + [i] + " :" + img);
+
+        if (i === 0) {
+          setNameBox1(nomeUpper);
+          setImgBox1(img);
+          setIdBox1(id);
+        } else if (i === 1) {
+          setNameBox2(nomeUpper);
+          setImgBox2(img);
+          setIdBox2(id);
+        } else if (i === 2) {
+          setNameBox3(nomeUpper);
+          setImgBox3(img);
+          setIdBox3(id);
+        } else if (i === 3) {
+          setNameBox4(nomeUpper);
+          setImgBox4(img);
+          setIdBox4(id);
+        } else if (i === 4) {
+          setNameBox5(nomeUpper);
+          setImgBox5(img);
+          setIdBox5(id);
+        } else if (i === 5) {
+          setNameBox6(nomeUpper);
+          setImgBox6(img);
+          setIdBox6(id);
+        } else if (i === 6) {
+          setNameBox7(nomeUpper);
+          setImgBox7(img);
+          setIdBox7(id);
+        } else if (i === 7) {
+          setNameBox8(nomeUpper);
+          setImgBox8(img);
+          setIdBox8(id);
+        } else if (i === 8) {
+          setNameBox9(nomeUpper);
+          setImgBox9(img);
+          setIdBox9(id);
+        } else if (i === 9) {
+          setNameBox10(nomeUpper);
+          setImgBox10(img);
+          setIdBox10(id);
+        } else if (i === 10) {
+          setNameBox11(nomeUpper);
+          setImgBox11(img);
+          setIdBox11(id);
+        } else if (i === 11) {
+          setNameBox12(nomeUpper);
+          setImgBox12(img);
+          setIdBox12(id);
+        } else if (i === 12) {
+          setNameBox13(nomeUpper);
+          setImgBox13(img);
+          setIdBox13(id);
+        } else if (i === 13) {
+          setNameBox14(nomeUpper);
+          setImgBox14(img);
+          setIdBox14(id);
+        } else if (i === 14) {
+          setNameBox15(nomeUpper);
+          setImgBox15(img);
+          setIdBox15(id);
+        } else if (i === 15) {
+          setNameBox16(nomeUpper);
+          setImgBox16(img);
+          setIdBox16(id);
+        } else if (i === 16) {
+          setNameBox17(nomeUpper);
+          setImgBox17(img);
+          setIdBox17(id);
+        } else if (i === 17) {
+          setNameBox18(nomeUpper);
+          setImgBox18(img);
+          setIdBox18(id);
+        } else if (i === 18) {
+          setNameBox19(nomeUpper);
+          setImgBox19(img);
+          setIdBox19(id);
+        } else if (i === 19) {
+          setNameBox20(nomeUpper);
+          setImgBox20(img);
+          setIdBox20(id);
+        }
+      }
+
+      getPokeBox();
+    }
+
+    // console.log(next20var); 
+    if (next20var.next !== null) {
+      setNext(next20var.next);
+    }
+
+    setPrev(next20var.previous);
+    // console.log(next);
+    openMenu();
+  }
+  
+
+
   return (
     <div className="containerApp">
 
@@ -816,56 +1874,56 @@ export default function App() {
         </div>
 
         <div id="genContId" className="genlistCont">
-          <div id="gen1boxid" className="gen">
+          <div id="gen1boxid" className="gen" onClick={GoGenI}>
             <div id="gen1id" className="gen-P">
               <img src="mewtwo.png" className="genimg"></img>
               Generation I (1-151)
             </div>
           </div>
 
-          <div id="gen2boxid" className="gen">
+          <div id="gen2boxid" className="gen" onClick={GoGenII}>
             <div id="gen2id" className="gen-P">
               <img src="celebi.png" className="genimg"></img>
               Generation II (152-251)
             </div>
           </div>
 
-          <div id="gen3boxid" className="gen">
+          <div id="gen3boxid" className="gen" onClick={GoGenIII}>
             <div id="gen3id" className="gen-P">
               <img src="deoxys.png" className="genimg"></img>
               Generation III (253-386)
             </div>
           </div>
 
-          <div id="gen4boxid" className="gen">
+          <div id="gen4boxid" className="gen" onClick={GoGenIV}>
             <div id="gen4id" className="gen-P">
               <img src="arceus.png" className="genimg"></img>
               Generation IV (387-493)
             </div>
           </div>
 
-          <div id="gen5boxid" className="gen">
+          <div id="gen5boxid" className="gen" onClick={GoGenV}>
             <div id="gen5id" className="gen-P">
               <img src="genesect.png" className="genimg"></img>
               Generation V (494-649)
             </div>
           </div>
 
-          <div id="gen6boxid" className="gen">
+          <div id="gen6boxid" className="gen" onClick={GoGenVI}>
             <div id="gen6id" className="gen-P">
               <img src="volcanion.png" className="genimg"></img>
               Generation VI (650-721)
             </div>
           </div>
 
-          <div id="gen7boxid" className="gen">
+          <div id="gen7boxid" className="gen" onClick={GoGenVII}>
             <div id="gen7id" className="gen-P">
               <img src="melmetal.png" className="genimg"></img>
               Generation VII (722-809)
             </div>
           </div>
 
-          <div id="gen8boxid" className="gen">
+          <div id="gen8boxid" className="gen" onClick={GoGenVIII}>
             <div id="gen8id" className="gen-P">
               <img src="calyrex.png" className="genimg"></img>
               Generation VIII (810-898)
