@@ -722,37 +722,69 @@ export default function App() {
 
   const openMenu = () => {
     if (menuOpen === false) {
-      document.getElementById("list").classList.remove("slideUpMenu");
-      document.getElementById("list").classList.add("slideDownMenu");
-      document.getElementById("gen1").classList.add("slideDownGen");
-      document.getElementById("gen2").classList.add("slideDownGen");
-      document.getElementById("gen3").classList.add("slideDownGen");
-      document.getElementById("gen4").classList.add("slideDownGen");
-      document.getElementById("gen5").classList.add("slideDownGen");
-      document.getElementById("gen6").classList.add("slideDownGen");
-      document.getElementById("gen7").classList.add("slideDownGen");
-      document.getElementById("gen8").classList.add("slideDownGen");
-      document.getElementById("genBox").classList.add("show");
-      setMenuOpen(true);
+      document.getElementById("gen1boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen2boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen3boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen4boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen5boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen6boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen7boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen8boxid").classList.remove("slideGenClassUp");
+      document.getElementById("gen1boxid").classList.add("slideGenClass");
+      document.getElementById("gen2boxid").classList.add("slideGenClass");
+      document.getElementById("gen3boxid").classList.add("slideGenClass");
+      document.getElementById("gen4boxid").classList.add("slideGenClass");
+      document.getElementById("gen5boxid").classList.add("slideGenClass");
+      document.getElementById("gen6boxid").classList.add("slideGenClass");
+      document.getElementById("gen7boxid").classList.add("slideGenClass");
+      document.getElementById("gen8boxid").classList.add("slideGenClass");
+      setMenuOpen(true)
+      document.getElementById("gen1id").classList.remove("hide");
+      document.getElementById("gen2id").classList.remove("hide");
+      document.getElementById("gen3id").classList.remove("hide");
+      document.getElementById("gen4id").classList.remove("hide");
+      document.getElementById("gen5id").classList.remove("hide");
+      document.getElementById("gen6id").classList.remove("hide");
+      document.getElementById("gen7id").classList.remove("hide");
+      document.getElementById("gen8id").classList.remove("hide");
+
+      document.getElementById("gen1id").classList.add("show");
+      document.getElementById("gen2id").classList.add("show");
+      document.getElementById("gen3id").classList.add("show");
+      document.getElementById("gen4id").classList.add("show");
+      document.getElementById("gen5id").classList.add("show");
+      document.getElementById("gen6id").classList.add("show");
+      document.getElementById("gen7id").classList.add("show");
+      document.getElementById("gen8id").classList.add("show");
+
 
     } else {
-      document.getElementById("list").classList.remove("slideDownMenu");
-      document.getElementById("list").classList.add("slideUpMenu");
-      // document.getElementById("gen1").classList.add("slideUpGen");
-      // document.getElementById("gen2").classList.add("slideUpGen");
-      // document.getElementById("gen3").classList.add("slideUpGen");
-      // document.getElementById("gen4").classList.add("slideUpGen");
-      // document.getElementById("gen5").classList.add("slideUpGen");
-      document.getElementById("genBox").classList.remove("show");
-
-      setMenuOpen(false);
+      document.getElementById("gen1boxid").classList.remove("slideGenClass");
+      document.getElementById("gen2boxid").classList.remove("slideGenClass");
+      document.getElementById("gen1boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen2boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen3boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen4boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen5boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen6boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen7boxid").classList.add("slideGenClassUp");
+      document.getElementById("gen8boxid").classList.add("slideGenClassUp");
+      setMenuOpen(false)
+      document.getElementById("gen1id").classList.add("hide");
+      document.getElementById("gen2id").classList.add("hide");
+      document.getElementById("gen3id").classList.add("hide");
+      document.getElementById("gen4id").classList.add("hide");
+      document.getElementById("gen5id").classList.add("hide");
+      document.getElementById("gen6id").classList.add("hide");
+      document.getElementById("gen7id").classList.add("hide");
+      document.getElementById("gen8id").classList.add("hide");
     }
   }
 
   return (
     <div className="containerApp">
 
-      {/* {loading ?
+      {loading ?
         <div className="loading">
           <img src="Pokédex_logo.png" className="pokeLogo"></img>
           <img src="pokeball.png" className="pokebola"></img>
@@ -774,30 +806,74 @@ export default function App() {
       </div>
       <div id="right" className="pokedexAnimationRight">
         <img src="play.png" className="open" onClick={AddAnimation}></img>
-      </div> */}
+      </div>
 
       <div className="containerPokedex">
         <div className="buscarContainer">
           <img src="list.png" className="listButton" onClick={openMenu}></img>
-
           <input id="buscaBotaoId" className="buscaInput" placeholder="Name or ID number..."></input>
           <img src="magnifier.png" className="buscaButton" onClick={ChosenPoke}></img>
         </div>
 
-        <div id="list" className="generationListContainer">
-          <div id="genBox" className="genBoxContainer">
-            <div className="genBox">
-              <div id="gen1" className="generation">Generation I (1-151)</div>
-              <div id="gen2" className="generation">Generation II (152-251)</div>
-              <div id="gen3" className="generation">Generation III (252-386)</div>
-              <div id="gen4" className="generation">Generation IV (387-493)</div>
-              <div id="gen5" className="generation">Generation V (494-649)</div>
-              <div id="gen6" className="generation">Generation VI (650-721)</div>
-              <div id="gen7" className="generation">Generation VII (722-809)</div>
-              <div id="gen8" className="generation">Generation VIII (810-898)</div>
+        <div id="genContId" className="genlistCont">
+          <div id="gen1boxid" className="gen">
+            <div id="gen1id" className="gen-P">
+              <img src="mewtwo.png" className="genimg"></img>
+              Generation I (1-151)
+            </div>
+          </div>
+
+          <div id="gen2boxid" className="gen">
+            <div id="gen2id" className="gen-P">
+              <img src="celebi.png" className="genimg"></img>
+              Generation II (152-251)
+            </div>
+          </div>
+
+          <div id="gen3boxid" className="gen">
+            <div id="gen3id" className="gen-P">
+              <img src="deoxys.png" className="genimg"></img>
+              Generation III (253-386)
+            </div>
+          </div>
+
+          <div id="gen4boxid" className="gen">
+            <div id="gen4id" className="gen-P">
+              <img src="arceus.png" className="genimg"></img>
+              Generation IV (387-493)
+            </div>
+          </div>
+
+          <div id="gen5boxid" className="gen">
+            <div id="gen5id" className="gen-P">
+              <img src="genesect.png" className="genimg"></img>
+              Generation V (494-649)
+            </div>
+          </div>
+
+          <div id="gen6boxid" className="gen">
+            <div id="gen6id" className="gen-P">
+              <img src="volcanion.png" className="genimg"></img>
+              Generation VI (650-721)
+            </div>
+          </div>
+
+          <div id="gen7boxid" className="gen">
+            <div id="gen7id" className="gen-P">
+              <img src="melmetal.png" className="genimg"></img>
+              Generation VII (722-809)
+            </div>
+          </div>
+
+          <div id="gen8boxid" className="gen">
+            <div id="gen8id" className="gen-P">
+              <img src="calyrex.png" className="genimg"></img>
+              Generation VIII (810-898)
             </div>
           </div>
         </div>
+
+
 
         <div className="gridPlusNext">
           <div className="grid-container">
