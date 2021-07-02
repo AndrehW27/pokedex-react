@@ -185,36 +185,108 @@ export default function App() {
 
 
 
-    if (tipo1var === "grass") {
-      setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67)");
-      setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67)");
-      setEfeito("leaves.png");
+    if (tipo1var === "normal") {
+      setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
+      setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
+      setEfeito("bubbles.png");
     }
     else if (tipo1var === "fire") {
       setCor("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
       setCorTipo1("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
       setEfeito("flames.png");
     }
-    else if (tipo1var === "water") {
-      setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1)");
-      setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1)");
+    else if (tipo1var === "fighting") {
+      setCor("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+      setCorTipo1("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
       setEfeito("bubbles.png");
     }
-    else if (tipo1var === "normal") {
-      setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
-      setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(255, 230, 94, 1)");
-      setEfeito("");
+    else if (tipo1var === "water") {
+      setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+      setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+      setEfeito("bubbles.png");
     }
-    else if (tipo1var === "bug") {
-      setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
-      setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
-      setEfeito("bug.png");
+    else if (tipo1var === "flying") {
+      setCor("linear-gradient(to top, rgb(167, 90, 255), rgb(184, 122, 255))");
+      setCorTipo1("linear-gradient(to top, rgb(167, 90, 255), rgb(184, 122, 255))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "grass") {
+      setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67))");
+      setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(57, 255, 67))");
+      setEfeito("leaves.png");
+    }
+    else if (tipo1var === "poison") {
+      setCor("linear-gradient(to top, rgb(108, 38, 141), rgb(132, 72, 160))");
+      setCorTipo1("linear-gradient(to top, rgb(108, 38, 141), rgb(132, 72, 160))");
+      setEfeito("bubbles.png");
     }
     else if (tipo1var === "electric") {
       setCor("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
       setCorTipo1("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
       setEfeito("thunder2.png");
     }
+    else if (tipo1var === "ground") {
+      setCor("linear-gradient(to top, rgb(177, 164, 46), rgb(224, 209, 75))");
+      setCorTipo1("linear-gradient(to top, rgb(177, 164, 46), rgb(224, 209, 75))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "psychic") {
+      setCor("linear-gradient(to top, rgb(177, 46, 166), rgb(194, 87, 185))");
+      setCorTipo1("linear-gradient(to top, rgb(177, 46, 166), rgb(194, 87, 185))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "rock") {
+      setCor("linear-gradient(to top, rgb(121, 112, 32), rgb(151, 143, 65))");
+      setCorTipo1("linear-gradient(to top, rgb(121, 112, 32), rgb(151, 143, 65))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "ice") {
+      setCor("linear-gradient(to top, rgb(46, 151, 177), rgb(88, 170, 190)) ");
+      setCorTipo1("linear-gradient(to top, rgb(46, 151, 177), rgb(88, 170, 190)) ");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "bug") {
+      setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
+      setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(160, 217, 0, 1)");
+      setEfeito("bug.png");
+    }
+    else if (tipo1var === "dragon") {
+      setCor("linear-gradient(to top, rgb(70, 22, 182), rgb(95, 46, 209))");
+      setCorTipo1("linear-gradient(to top, rgb(70, 22, 182), rgb(95, 46, 209))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "ghost") {
+      setCor("linear-gradient(to top, rgb(61, 18, 110), rgb(79, 33, 133))");
+      setCorTipo1("linear-gradient(to top, rgb(61, 18, 110), rgb(79, 33, 133))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "dark") {
+      setCor("linear-gradient(to top, rgb(67, 42, 11), rgb(77, 53, 25))");
+      setCorTipo1("linear-gradient(to top, rgb(67, 42, 11), rgb(77, 53, 25))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "steel") {
+      setCor("linear-gradient(to top, rgb(71, 84, 100), rgb(86, 98, 112))");
+      setCorTipo1("linear-gradient(to top, rgb(71, 84, 100), rgb(86, 98, 112))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "fairy") {
+      setCor("linear-gradient(to top, rgb(250, 155, 202), rgb(252, 179, 216))");
+      setCorTipo1("linear-gradient(to top, rgb(250, 155, 202), rgb(252, 179, 216))");
+      setEfeito("bubbles.png");
+    }
+    else {
+      setCor("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+      setCorTipo1("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+      setEfeito("bubbles.png");
+    }
+
+
+
+
+
+
+
 
     //REFINAMENTO TIPO 2
     if (charData.types.length > 1) {
@@ -917,7 +989,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=151");
+      let res = await fetch(basePokemonURL + "?offset=151");
       let data = await res.json()
       return data;
     }
@@ -1049,7 +1121,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=251");
+      let res = await fetch(basePokemonURL + "?offset=251");
       let data = await res.json()
       return data;
     }
@@ -1181,7 +1253,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=386");
+      let res = await fetch(basePokemonURL + "?offset=386");
       let data = await res.json()
       return data;
     }
@@ -1313,7 +1385,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=493");
+      let res = await fetch(basePokemonURL + "?offset=493");
       let data = await res.json()
       return data;
     }
@@ -1445,7 +1517,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=649");
+      let res = await fetch(basePokemonURL + "?offset=649");
       let data = await res.json()
       return data;
     }
@@ -1577,7 +1649,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=721");
+      let res = await fetch(basePokemonURL + "?offset=721");
       let data = await res.json()
       return data;
     }
@@ -1709,7 +1781,7 @@ export default function App() {
     // console.log("genII");
 
     const getPokemonDataNext = async () => {
-      let res = await fetch(basePokemonURL+"?offset=809");
+      let res = await fetch(basePokemonURL + "?offset=809");
       let data = await res.json()
       return data;
     }
@@ -1836,7 +1908,7 @@ export default function App() {
     // console.log(next);
     openMenu();
   }
-  
+
 
 
   return (
