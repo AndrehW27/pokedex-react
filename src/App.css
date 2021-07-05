@@ -100,7 +100,7 @@ body {
   top: 4.5rem;
   width: 100%;
   background: rgb(164, 196, 255);
-  /* height: 24rem; */  
+  /* height: 24rem; */
   color: white;
 
 }
@@ -110,34 +110,37 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to top, rgb(144, 183, 255), rgb(164, 196, 255));
+  /* background: linear-gradient(to top, rgb(144, 183, 255), rgb(164, 196, 255)); */
   /* height: 3rem; */
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
 }
 
-.gen:hover{
+.borderWhite {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.gen:hover {
   cursor: pointer;
   color: rgb(17, 49, 117);
 
   background: rgba(0, 0, 0, 0.25);
 }
 
-.genimg{
+.genimg {
   width: 2.5rem;
   margin-right: 0.5rem;
 }
 
-.gen-P{
+.gen-P {
   display: none;
   align-items: center;
   justify-content: center;
 }
 
-.show{
+.show {
   display: flex;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
@@ -217,7 +220,7 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
   color: white;
   padding: 0rem 0.5rem;
-  transition: 300ms; 
+  transition: 300ms;
 
 }
 
@@ -263,6 +266,69 @@ body {
   color: white;
   z-index: 9999;
 }
+
+#notFoundId {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 50vh;
+  color: black;
+  background-color: white;
+}
+
+.slideNotFoundClassDown {
+  animation: slideNotFoundDown 2s forwards;
+}
+
+@keyframes slideNotFoundDown {
+  from {
+    height: 50vh;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+.slideNotFoundClassUp {
+  animation: slideNotFoundUp 2s forwards;
+}
+
+@keyframes slideNotFoundUp {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 50vh;
+  }
+}
+
+/* .z{
+  z-index: 1;
+} */
+
+.fechar {
+  cursor: pointer;
+}
+
+.notFoundImg {
+  width: 100%;
+}
+
+/* .notFoundPlusbuttonCont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+} */
+
 
 /* .spinner{
   width: 80px;

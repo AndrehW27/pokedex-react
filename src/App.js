@@ -2,11 +2,10 @@ import './App.css';
 import Pokemom from './components/Pokemom';
 // import PokeAPI from './components/PokeAPI';
 import { useState, useEffect } from 'react';
-import Pokedex from './components/Pokedex';
+// import Pokedex from './components/Pokedex';
 
 export default function App() {
 
-  const [hidePokedex, setHidePokedex] = useState(false)
   const [loading, setLoading] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -97,8 +96,10 @@ export default function App() {
   const [def, setDef] = useState("")
   const [spd, setSpd] = useState("")
 
-//TENTATIVA 404
-  const [isStatus404, setIsStatus404] = useState(false)
+  //TENTATIVA 404
+
+  const [is404State, setis404State] = useState(false)
+  let is404 = false;
 
 
   // PEGANDO TODOS OS DADOS DA API
@@ -107,15 +108,24 @@ export default function App() {
   const getPokemonData = async (endpoint) => {
     let res = await fetch(`${basePokemonURL}${endpoint}`);
 
-//TENTATIVA 404
-    let status404 = res.status
-    console.log(status404);
+    //TENTATIVA 404
+    let status404 = await res.status
+    // console.log("Status: " + status404);
+
     if (status404 === 404) {
-      setIsStatus404(true);
-      alert("Pokemom not found!")
+      // alert("Pokemom not found!")
+      // document.getElementById("notFoundId").classList.remove("slideNotFoundClassDown");
+      // document.getElementById("notFoundId").classList.add("slideNotFoundClassUp");
+      // document.getElementById("notFoundPlusbuttonCont").classList.remove("hide");
+
+      is404 = true;
+      setis404State(true)
+      console.log("Status404: " + is404);
+      document.getElementById("buscaBotaoId").value = "";
     }
-    setIsStatus404(false);
-    
+    // console.log("Status404: " + is404);
+
+    is404 = false;
     let data = await res.json()
     return data;
   }
@@ -125,283 +135,287 @@ export default function App() {
     //POKEMOM DATA
     let charData = await getPokemonData(id);
 
-//TENTATIVA 404
+    //TENTATIVA 404
     // if (isStatus404 === false) {}     
-    
-      setPokeData(charData);       
 
-      let idvar = charData.id.toString();
+    setPokeData(charData);
 
-      if (idvar.length === 1) {
-        let idvar = "#00" + charData.id.toString();
-        setId(idvar);
-      }
-      else if (idvar.length === 2) {
-        let idvar = "#0" + charData.id.toString();
-        setId(idvar);
-      }
-      else if (idvar.length === 3) {
-        let idvar = "#" + charData.id.toString();
-        setId(idvar);
-      }
+    let idvar = charData.id.toString();
 
-      let imgVar = charData.sprites.other.["official-artwork"].front_default;
-      setImagem(imgVar);
-      let nomeVar = charData.name;
-      let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
+    if (idvar.length === 1) {
+      let idvar = "#00" + charData.id.toString();
+      setId(idvar);
+    }
+    else if (idvar.length === 2) {
+      let idvar = "#0" + charData.id.toString();
+      setId(idvar);
+    }
+    else if (idvar.length === 3) {
+      let idvar = "#" + charData.id.toString();
+      setId(idvar);
+    }
 
-
-      setNome(nomeUpper);
+    let imgVar = charData.sprites.other.["official-artwork"].front_default;
+    setImagem(imgVar);
+    let nomeVar = charData.name;
+    let nomeUpper = nomeVar.charAt(0).toUpperCase() + nomeVar.slice(1);
 
 
-      let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
-      setGif(gifVar);
-      let tipo1var = charData.types[0].type.name;
-      setTipo1(tipo1var);
+    setNome(nomeUpper);
 
 
-      //PESO
-      let pesovar = await charData.weight;
-      let kilosvar = pesovar.toString();
-      if (kilosvar.length === 2) {
-        let kilosvar2 = kilosvar.charAt(0) + "." + kilosvar.charAt(1)
-        setPeso(kilosvar2);
-      }
-      else if (kilosvar.length === 3) {
-        let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + "." + kilosvar.charAt(2)
-        setPeso(kilosvar2);
-      }
-      else if (kilosvar.length === 4) {
-        let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + kilosvar.charAt(2) + "." + kilosvar.charAt(2)
-        setPeso(kilosvar2);
-      }
-
-      //ALTURA
-      let alturavar = await charData.height;
-      let metrosvar = alturavar.toString();
-      if (metrosvar.length === 1) {
-        let metrosvar2 = "0." + metrosvar.charAt(0)
-        setAltura(metrosvar2);
-      }
-      else {
-        let metrosvar2 = metrosvar.charAt(0) + "." + metrosvar.charAt(1)
-        setAltura(metrosvar2);
-      }
+    let gifVar = charData.sprites.versions.["generation-v"].["black-white"].animated.front_default;
+    setGif(gifVar);
+    let tipo1var = charData.types[0].type.name;
+    setTipo1(tipo1var);
 
 
-      let hpvar = charData.stats[0].base_stat;
-      setHp(hpvar);
-      let atkvar = charData.stats[1].base_stat;
-      setAtk(atkvar);
-      let defVar = charData.stats[2].base_stat;
-      setDef(defVar);
-      let spdvar = charData.stats[3].base_stat;
-      setSpd(spdvar);
+    //PESO
+    let pesovar = await charData.weight;
+    let kilosvar = pesovar.toString();
+    if (kilosvar.length === 2) {
+      let kilosvar2 = kilosvar.charAt(0) + "." + kilosvar.charAt(1)
+      setPeso(kilosvar2);
+    }
+    else if (kilosvar.length === 3) {
+      let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + "." + kilosvar.charAt(2)
+      setPeso(kilosvar2);
+    }
+    else if (kilosvar.length === 4) {
+      let kilosvar2 = kilosvar.charAt(0) + kilosvar.charAt(1) + kilosvar.charAt(2) + "." + kilosvar.charAt(2)
+      setPeso(kilosvar2);
+    }
+
+    //ALTURA
+    let alturavar = await charData.height;
+    let metrosvar = alturavar.toString();
+    if (metrosvar.length === 1) {
+      let metrosvar2 = "0." + metrosvar.charAt(0)
+      setAltura(metrosvar2);
+    }
+    else {
+      let metrosvar2 = metrosvar.charAt(0) + "." + metrosvar.charAt(1)
+      setAltura(metrosvar2);
+    }
 
 
-
-      if (tipo1var === "normal") {
-        setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
-        setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
-        setEfeito("normalteste.png");
-      }
-      else if (tipo1var === "fire") {
-        setCor("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
-        setCorTipo1("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
-        setEfeito("flames.png");
-      }
-      else if (tipo1var === "fighting") {
-        setCor("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
-        setCorTipo1("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
-        setEfeito("fight.png");
-      }
-      else if (tipo1var === "water") {
-        setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
-        setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
-        setEfeito("bubbles.png");
-      }
-      else if (tipo1var === "flying") {
-        setCor("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
-        setCorTipo1("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
-        setEfeito("wind4.png");
-      }
-      else if (tipo1var === "grass") {
-        setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
-        setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
-        setEfeito("leaves.png");
-      }
-      else if (tipo1var === "poison") {
-        setCor("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 180))");
-        setCorTipo1("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
-        setEfeito("smoke.png");
-      }
-      else if (tipo1var === "electric") {
-        setCor("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
-        setCorTipo1("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
-        setEfeito("thunder2.png");
-      }
-      else if (tipo1var === "ground") {
-        setCor("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
-        setCorTipo1("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
-        setEfeito("ground2.png");
-      }
-      else if (tipo1var === "psychic") {
-        setCor("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
-        setCorTipo1("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
-        setEfeito("psy2.png");
-      }
-      else if (tipo1var === "rock") {
-        setCor("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
-        setCorTipo1("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
-        setEfeito("rocks2.png");
-      }
-      else if (tipo1var === "ice") {
-        setCor("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
-        setCorTipo1("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
-        setEfeito("snow.png");
-      }
-      else if (tipo1var === "bug") {
-        setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
-        setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
-        setEfeito("bug.png");
-      }
-      else if (tipo1var === "dragon") {
-        setCor("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
-        setCorTipo1("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
-        setEfeito("dragon.png");
-      }
-      else if (tipo1var === "ghost") {
-        setCor("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
-        setCorTipo1("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
-        setEfeito("bat.png");
-      }
-      else if (tipo1var === "dark") {
-        setCor("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
-        setCorTipo1("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
-        setEfeito("dark.png");
-      }
-      else if (tipo1var === "steel") {
-        setCor("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
-        setCorTipo1("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
-        setEfeito("rock.png");
-      }
-      else if (tipo1var === "fairy") {
-        setCor("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
-        setCorTipo1("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
-        setEfeito("fairy.png");
-      }
-      else {
-        setCor("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
-        setCorTipo1("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
-        setEfeito("normalteste.png");
-      }
-
-
-      if (charData.types.length > 1) {
-        let tipo2var = charData.types[1].type.name;
-        setTipo2(tipo2var);
-
-        if (tipo2var === "normal") {
-          setCorTipo2("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
-        }
-        else if (tipo2var === "fire") {
-          setCorTipo2("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
-        }
-        else if (tipo2var === "fighting") {
-          setCorTipo2("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
-        }
-        else if (tipo2var === "water") {
-          setCorTipo2("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
-        }
-        else if (tipo2var === "flying") {
-          setCorTipo2("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
-        }
-        else if (tipo2var === "grass") {
-          setCorTipo2("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
-        }
-        else if (tipo2var === "poison") {
-          setCorTipo2("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
-        }
-        else if (tipo2var === "electric") {
-          setCorTipo2("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
-        }
-        else if (tipo2var === "ground") {
-          setCorTipo2("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
-        }
-        else if (tipo2var === "psychic") {
-          setCorTipo2("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
-        }
-        else if (tipo2var === "rock") {
-          setCorTipo2("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
-        }
-        else if (tipo2var === "ice") {
-          setCorTipo2("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
-        }
-        else if (tipo2var === "bug") {
-          setCorTipo2("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
-        }
-        else if (tipo2var === "dragon") {
-          setCorTipo2("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
-        }
-        else if (tipo2var === "ghost") {
-          setCorTipo2("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
-        }
-        else if (tipo2var === "dark") {
-          setCorTipo2("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
-        }
-        else if (tipo2var === "steel") {
-          setCorTipo2("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
-        }
-        else if (tipo2var === "fairy") {
-          setCorTipo2("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
-        }
-        else {
-          setCorTipo2("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
-        }
-
-
-      }
+    let hpvar = charData.stats[0].base_stat;
+    setHp(hpvar);
+    let atkvar = charData.stats[1].base_stat;
+    setAtk(atkvar);
+    let defVar = charData.stats[2].base_stat;
+    setDef(defVar);
+    let spdvar = charData.stats[3].base_stat;
+    setSpd(spdvar);
 
 
 
+    if (tipo1var === "normal") {
+      setCor("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+      setCorTipo1("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+      setEfeito("normalteste.png");
+    }
+    else if (tipo1var === "fire") {
+      setCor("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+      setCorTipo1("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+      setEfeito("flames.png");
+    }
+    else if (tipo1var === "fighting") {
+      setCor("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+      setCorTipo1("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+      setEfeito("fight.png");
+    }
+    else if (tipo1var === "water") {
+      setCor("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+      setCorTipo1("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+      setEfeito("bubbles.png");
+    }
+    else if (tipo1var === "flying") {
+      setCor("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+      setCorTipo1("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+      setEfeito("wind4.png");
+    }
+    else if (tipo1var === "grass") {
+      setCor("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+      setCorTipo1("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+      setEfeito("leaves.png");
+    }
+    else if (tipo1var === "poison") {
+      setCor("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 180))");
+      setCorTipo1("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
+      setEfeito("smoke.png");
+    }
+    else if (tipo1var === "electric") {
+      setCor("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+      setCorTipo1("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+      setEfeito("thunder2.png");
+    }
+    else if (tipo1var === "ground") {
+      setCor("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+      setCorTipo1("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+      setEfeito("ground2.png");
+    }
+    else if (tipo1var === "psychic") {
+      setCor("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+      setCorTipo1("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+      setEfeito("psy2.png");
+    }
+    else if (tipo1var === "rock") {
+      setCor("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+      setCorTipo1("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+      setEfeito("rocks2.png");
+    }
+    else if (tipo1var === "ice") {
+      setCor("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+      setCorTipo1("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+      setEfeito("snow.png");
+    }
+    else if (tipo1var === "bug") {
+      setCor("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+      setCorTipo1("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+      setEfeito("bug.png");
+    }
+    else if (tipo1var === "dragon") {
+      setCor("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+      setCorTipo1("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+      setEfeito("dragon.png");
+    }
+    else if (tipo1var === "ghost") {
+      setCor("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+      setCorTipo1("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+      setEfeito("bat.png");
+    }
+    else if (tipo1var === "dark") {
+      setCor("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+      setCorTipo1("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+      setEfeito("dark.png");
+    }
+    else if (tipo1var === "steel") {
+      setCor("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+      setCorTipo1("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+      setEfeito("rock.png");
+    }
+    else if (tipo1var === "fairy") {
+      setCor("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
+      setCorTipo1("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
+      setEfeito("fairy.png");
+    }
+    else {
+      setCor("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+      setCorTipo1("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
+      setEfeito("normalteste.png");
+    }
 
 
-      //REFINAMENTO TIPO 2
-      if (charData.types.length > 1) {
-        let tipo2var = await charData.types[1].type.name;
-        document.getElementById("type2Id").classList.remove("hide");
+    if (charData.types.length > 1) {
+      let tipo2var = charData.types[1].type.name;
+      setTipo2(tipo2var);
 
-        setTipo2(tipo2var);
+      if (tipo2var === "normal") {
+        setCorTipo2("linear-gradient(to top, rgba(255, 194, 52, 1),  rgba(280, 230, 94, 1)");
+      }
+      else if (tipo2var === "fire") {
+        setCorTipo2("linear-gradient(to top, rgb(209, 77, 0),  rgba(255, 178, 56, 1))");
+      }
+      else if (tipo2var === "fighting") {
+        setCorTipo2("linear-gradient(to top, rgb(131, 9, 9), rgb(255, 57, 57))");
+      }
+      else if (tipo2var === "water") {
+        setCorTipo2("linear-gradient(to top, rgba(34, 69, 209, 1),  rgba(33, 160, 209, 1))");
+      }
+      else if (tipo2var === "flying") {
+        setCorTipo2("linear-gradient(to top, rgb(167, 90, 255), rgb(230, 160, 255))");
+      }
+      else if (tipo2var === "grass") {
+        setCorTipo2("linear-gradient(to top, rgb(28, 105, 30),  rgb(100, 255, 67))");
+      }
+      else if (tipo2var === "poison") {
+        setCorTipo2("linear-gradient(to top, rgb(108, 38, 141), rgb(180, 72, 160))");
+      }
+      else if (tipo2var === "electric") {
+        setCorTipo2("linear-gradient(to top, rgba(255, 179, 0, 1),  rgba(255, 236, 0, 1))");
+      }
+      else if (tipo2var === "ground") {
+        setCorTipo2("linear-gradient(to top, rgb(177, 164, 46), rgb(260, 230, 100))");
+      }
+      else if (tipo2var === "psychic") {
+        setCorTipo2("linear-gradient(to top, rgb(177, 46, 166), rgb(225, 130, 185))");
+      }
+      else if (tipo2var === "rock") {
+        setCorTipo2("linear-gradient(to top, rgb(121, 112, 32), rgb(195, 200, 65))");
+      }
+      else if (tipo2var === "ice") {
+        setCorTipo2("linear-gradient(to top, rgb(40, 151, 177), rgb(100, 240, 180)) ");
+      }
+      else if (tipo2var === "bug") {
+        setCorTipo2("linear-gradient(to top, rgba(106, 144, 0, 1),  rgba(210, 210, 0, 1)");
+      }
+      else if (tipo2var === "dragon") {
+        setCorTipo2("linear-gradient(to top, rgb(70, 22, 182), rgb(120, 80, 190))");
+      }
+      else if (tipo2var === "ghost") {
+        setCorTipo2("linear-gradient(to top, rgb(61, 18, 110), rgb(100, 80, 133))");
+      }
+      else if (tipo2var === "dark") {
+        setCorTipo2("linear-gradient(to top, rgb(67, 42, 11), rgb(95, 85, 20))");
+      }
+      else if (tipo2var === "steel") {
+        setCorTipo2("linear-gradient(to top, rgb(71, 84, 100), rgb(110, 105, 120))");
+      }
+      else if (tipo2var === "fairy") {
+        setCorTipo2("linear-gradient(to top, rgb(270, 155, 202), rgb(400, 195, 230))");
       }
       else {
-        document.getElementById("type2Id").classList.add("hide");
+        setCorTipo2("linear-gradient(to top, rgb(31, 124, 124), rgb(54, 150, 150))");
       }
 
-      // console.log(charData.types.length);
-
-    } 
-
-
-  const ChosenPoke = () => {
-
-    let valorDigitado = document.getElementById("buscaBotaoId").value;
-    if (valorDigitado !== "") {
-     
-//TENTATIVA 404
-      gettingPokemom(valorDigitado);
-      if (isStatus404 === false) {
-        document.getElementById("pokomomId").classList.add("mostrarPoke");
-      }
-
-      // gettingPokemom(valorDigitado);
-      // document.getElementById("pokomomId").classList.add("mostrarPoke");
 
     }
+
+
+
+
+
+    //REFINAMENTO TIPO 2
+    if (charData.types.length > 1) {
+      let tipo2var = await charData.types[1].type.name;
+      document.getElementById("type2Id").classList.remove("hide");
+
+      setTipo2(tipo2var);
+    }
+    else {
+      document.getElementById("type2Id").classList.add("hide");
+    }
+
+    // console.log(charData.types.length);
+
+  }
+
+
+  const ChosenPoke = async () => {
+
+    let valorDigitado = document.getElementById("buscaBotaoId").value;
+
+    if (valorDigitado !== "") {
+      await gettingPokemom(valorDigitado);
+      // console.log("Antes: "+is404);
+
+      if (is404 === false) {
+        document.getElementById("pokomomId").classList.add("mostrarPoke");
+        // console.log("Depois: "+is404);
+      }
+    }
+    else {
+      alert("Digite algo, antes de procurar!")
+    }
+
     document.getElementById("buscaBotaoId").value = "";
 
   }
 
   const Box1Chosed = () => {
+    // console.log("Box1!");
+
     gettingPokemom(idbox1);
     document.getElementById("pokomomId").classList.toggle("mostrarPoke");
     document.getElementById("genContId").classList.add("hide");
@@ -924,7 +938,6 @@ export default function App() {
     if (menuOpen === false) {
       document.getElementById("genContId").classList.remove("hide");
 
-
       document.getElementById("gen1boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen2boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen3boxid").classList.remove("slideGenClassUp");
@@ -933,14 +946,14 @@ export default function App() {
       document.getElementById("gen6boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen7boxid").classList.remove("slideGenClassUp");
       document.getElementById("gen8boxid").classList.remove("slideGenClassUp");
-      document.getElementById("gen1boxid").classList.add("slideGenClass");
-      document.getElementById("gen2boxid").classList.add("slideGenClass");
-      document.getElementById("gen3boxid").classList.add("slideGenClass");
-      document.getElementById("gen4boxid").classList.add("slideGenClass");
-      document.getElementById("gen5boxid").classList.add("slideGenClass");
-      document.getElementById("gen6boxid").classList.add("slideGenClass");
-      document.getElementById("gen7boxid").classList.add("slideGenClass");
-      document.getElementById("gen8boxid").classList.add("slideGenClass");
+      document.getElementById("gen1boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen2boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen3boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen4boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen5boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen6boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen7boxid").classList.add("slideGenClass", "borderWhite");
+      document.getElementById("gen8boxid").classList.add("slideGenClass", "borderWhite");
       setMenuOpen(true)
       document.getElementById("gen1id").classList.remove("hide");
       document.getElementById("gen2id").classList.remove("hide");
@@ -962,8 +975,18 @@ export default function App() {
 
 
     } else {
-      document.getElementById("gen1boxid").classList.remove("slideGenClass");
-      document.getElementById("gen2boxid").classList.remove("slideGenClass");
+
+      document.getElementById("gen1boxid").classList.remove("borderWhite");
+      document.getElementById("gen2boxid").classList.remove("borderWhite");
+      document.getElementById("gen3boxid").classList.remove("borderWhite");
+      document.getElementById("gen4boxid").classList.remove("borderWhite");
+      document.getElementById("gen3boxid").classList.remove("borderWhite");
+      document.getElementById("gen5boxid").classList.remove("borderWhite");
+      document.getElementById("gen6boxid").classList.remove("borderWhite");
+      document.getElementById("gen7boxid").classList.remove("borderWhite");
+      document.getElementById("gen8boxid").classList.remove("borderWhite");
+
+
       document.getElementById("gen1boxid").classList.add("slideGenClassUp");
       document.getElementById("gen2boxid").classList.add("slideGenClassUp");
       document.getElementById("gen3boxid").classList.add("slideGenClassUp");
@@ -2040,6 +2063,18 @@ export default function App() {
     openMenu();
   }
 
+  const Fechar = () => {
+    setis404State(false)
+    document.getElementById("notFoundId").classList.remove("slideNotFoundClassUp");
+    document.getElementById("notFoundId").classList.add("slideNotFoundClassDown");
+    document.getElementById("notFoundPlusbuttonCont").classList.add("hide");
+  }
+  // const Abrir = () => {
+  //   document.getElementById("notFoundPlusbuttonCont").classList.add("show");
+  //   document.getElementById("notFoundId").classList.remove("slideNotFoundClassDown");
+  //   document.getElementById("notFoundId").classList.add("slideNotFoundClassUp");
+  // }
+
   return (
     <div className="containerApp">
 
@@ -2067,6 +2102,19 @@ export default function App() {
         <img src="play.png" className="open" onClick={AddAnimation}></img>
       </div> */}
 
+      {is404State ?
+
+        <div id="notFoundId" className="notFound">
+          <div id="notFoundPlusbuttonCont">
+            <div id="fecharId" className="fechar" onClick={Fechar}>X</div>
+            <p>Pokemom not found!</p>
+            {/* <img src="notfound.jpg" className="notFoundImg" alt="" /> */}
+          </div>
+        </div>
+        :
+        <p></p>
+
+      }
 
 
       <div className="containerPokedex">
@@ -2074,6 +2122,7 @@ export default function App() {
           <img src="list.png" className="listButton" onClick={openMenu}></img>
           <input id="buscaBotaoId" className="buscaInput" placeholder="Name or ID number..."></input>
           <img src="magnifier.png" className="buscaButton" onClick={ChosenPoke}></img>
+          {/* <img src="magnifier.png" className="buscaButton" onClick={Abrir}></img> */}
         </div>
 
         <div id="genContId" className="genlistCont">
@@ -2243,7 +2292,6 @@ export default function App() {
       </div>
 
       <Pokemom
-        hide={setHidePokedex}
         id={id}
         cor={cor}
         efeito={efeito}

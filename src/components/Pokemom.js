@@ -2,11 +2,11 @@
 import '../styles/pokemom.css';
 
 export default function Pokedex({
-    hide, id, cor, img, efeito, gif, nome, tipo1, cortipo1, cortipo2, peso, altura, tipo2, hp, atk, def, spd }) {
+    id, cor, img, efeito, gif, nome, tipo1, cortipo1, cortipo2, peso, altura, tipo2, hp, atk, def, spd }) {
 
 
     const VoltarParaPokedex = () => {
-        // hide(true);
+       
         document.getElementById("pokomomId").classList.remove("mostrarPoke");
     }
 
@@ -24,7 +24,11 @@ export default function Pokedex({
 
 
             <h1 className="nome">{nome}
-                <img className="gif" src={gif} alt="Bulbassauro" />
+                {gif !== null ?
+                     <img className="gif" src={gif} alt="" />
+                    :
+                   <p></p>
+                }
             </h1>
 
             <div className="infos">

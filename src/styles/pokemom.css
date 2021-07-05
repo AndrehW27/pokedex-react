@@ -24,6 +24,10 @@
     display: flex;
 }
 
+.pokomomId {
+    display: flex;
+}
+
 .voltarNum {
     display: flex;
     align-items: center;
