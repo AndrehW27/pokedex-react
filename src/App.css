@@ -277,8 +277,10 @@ body {
   z-index: 1;
   width: 100%;
   height: 50vh;
-  color: black;
-  background-color: white;
+ 
+  background-color: rgb(164, 196, 255);
+  border-top: 1px solid white;
+
 }
 
 .slideNotFoundClassDown {
@@ -315,19 +317,31 @@ body {
 
 .fechar {
   cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
 .notFoundImg {
   width: 100%;
 }
 
-/* .notFoundPlusbuttonCont{
+#notFoundPlusbuttonCont{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 500px;
-} */
+}
+
+#notFoundPlusbuttonCont > p{
+  /* background-color: rgba(0, 0, 0, 0.25); */
+  color: white;
+  padding: 0rem 0.5rem;
+  font-size: 1.5rem;
+}
+
+
 
 
 /* .spinner{

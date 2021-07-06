@@ -411,6 +411,8 @@ export default function App() {
 
     document.getElementById("buscaBotaoId").value = "";
 
+
+
   }
 
   const Box1Chosed = () => {
@@ -2106,9 +2108,9 @@ export default function App() {
 
         <div id="notFoundId" className="notFound">
           <div id="notFoundPlusbuttonCont">
-            <div id="fecharId" className="fechar" onClick={Fechar}>X</div>
+            <p id="fecharId" className="fechar" onClick={Fechar}>X</p>
             <p>Pokemom not found!</p>
-            {/* <img src="notfound.jpg" className="notFoundImg" alt="" /> */}
+            <img src="notfound.jpg" className="notFoundImg" alt="" />
           </div>
         </div>
         :
