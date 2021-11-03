@@ -2080,7 +2080,7 @@ export default function App() {
   return (
     <div className="containerApp">
 
-      {/* {loading ?
+    {loading ?
         <div className="loading">
           <img src="Pokédex_logo.png" className="pokeLogo"></img>
           <img src="pokeball.png" className="pokebola"></img>
@@ -2102,7 +2102,7 @@ export default function App() {
       </div>
       <div id="right" className="pokedexAnimationRight">
         <img src="play.png" className="open" onClick={AddAnimation}></img>
-      </div> */}
+      </div>
 
       {is404State ?
 

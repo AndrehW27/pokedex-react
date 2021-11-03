@@ -1,0 +1,10 @@
+? - arrumar o bota voltar, que depois vai para a primeira tela(parece que sumiu sozinho???), quando fica muito tempo em um pokmom ele redirecionar para a pag 1
+OK - arrumar se clicar em um pokemo tem que fechar o menu - feito
+? - adicionar next na pag de poke?
+? - pag personalizada/aviso de 404 
+OK - nome ficar na frente do efeito - feito
+OK - arrumar quando pesquisa pelo nome, volta nao da pra pesuisar de nvo(apagar o value da ibnput no botao vooltar)
+movimento na barra de status
+OK - apagar valçor digitado na inpute depois de vbolçtar da tela do pokemom
+
+? - arrumar nome e gi geraçao 6? pra frente
